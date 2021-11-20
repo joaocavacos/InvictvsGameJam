@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -565749163432326368}
   - component: {fileID: 5732546467390535783}
   - component: {fileID: -7291571739417535112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArchEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,9 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   speed: 4
-  health: 50
   stopRange: 6
   attackRange: 6
+  bodyRenderer: {fileID: 4224692728344441414}
 --- !u!114 &4481895736240580167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 0
+  enableRotation: 1
   autoRepath:
     mode: 2
     interval: 0.5

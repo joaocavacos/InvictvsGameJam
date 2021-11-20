@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8489072398171420399}
   - component: {fileID: 4627637595831850505}
   - component: {fileID: -5683150925099356049}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LightEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,10 +104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  speed: 6
-  health: 30
+  speed: 4
   stopRange: 2
   attackRange: 1
+  bodyRenderer: {fileID: 4224692728344441414}
 --- !u!114 &4481895736240580167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7262681596930438411}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponPosition
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}

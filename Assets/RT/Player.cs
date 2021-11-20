@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
-   
-    public static States state { get; private set; }
+
+    public States state;
     public static Player instance { get; private set; }
     public static CharacterControls _controls { get; private set; }
     public static UnityEvent<States> OnChangeState = new UnityEvent<States>();
@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb2D;
     public PlayerHealth healthSystem;
     public bool isDead = false;
+    public Parry parry;
+
+    public Animator animator;
     private void Awake()
     {
         if (instance!=null)
@@ -23,12 +26,13 @@ public class Player : MonoBehaviour
         instance = this;
         _controls = new CharacterControls();
         isDead = false;
+        animator.SetBool("Dead", false);
     }
     private void Start()
     {        
         ChangeState(States.IDLE);
     }
-    
+
     private void OnEnable()
     {
         _controls.Character.Movement.Enable();
@@ -56,18 +60,28 @@ public class Player : MonoBehaviour
     public void ChangeState(States s)
     {
         state = s;
-        OnChangeState?.Invoke(s);
+        OnChangeState?.Invoke(s); 
     }
     public void KillPlayer()
     {
-        var components = GetComponents<PlayerComponent>();
-        Debug.LogWarning($"Player components ammount : {components.Length}");
-        foreach (var c in components)
+        if (!isDead)
         {
-            c.OnDie();
-            c.enabled = false;
+            var components = GetComponents<PlayerComponent>();
+            Debug.LogWarning($"Player components ammount : {components.Length}");
+            foreach (var c in components)
+            {
+                c.OnDie();
+                c.enabled = false;
+            }
+            isDead = true;
+            rb2D.isKinematic = true;
+            rb2D.velocity = Vector2.zero;
+            //Feedback
+            body.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
+            GetComponent<Collider2D>().enabled = false;
+            animator.SetBool("Dead", true);
         }
-        isDead = true;
+        
     }
 }
 public enum States
@@ -75,5 +89,6 @@ public enum States
     IDLE,
     ROLL,
     BLOCK,
-    ATK
+    ATK,
+    DEAD
 }

@@ -9,7 +9,7 @@ public class PlayerRotation : PlayerComponent
     public float rotationSpeed;
     private void Update()
     {
-        if (Player._controls.Character.Movement.ReadValue<Vector2>()!=Vector2.zero && Player.state != States.ROLL)
+        if (Player._controls.Character.Movement.ReadValue<Vector2>()!=Vector2.zero && Player.instance.state != States.ROLL)
         {
             float angle = Mathf.Atan2(Player.instance.rb2D.velocity.normalized.y, Player.instance.rb2D.velocity.normalized.x) * Mathf.Rad2Deg;
             Player.instance.body.rotation = Quaternion.Lerp(Player.instance.body.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);

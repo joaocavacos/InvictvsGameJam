@@ -23,13 +23,25 @@ public class RangedAttack : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, target.position) <= enemy.stopRange)
             {
-                Instantiate(arrowObj, transform.position, transform.rotation);
+                var arrow = Instantiate(arrowObj, transform.position, transform.rotation).GetComponent<Arrow>();
+                arrow.Setup((Player.instance.transform.position - transform.position).normalized, enemy);
                 timeBetweenAttack = startTimeBetweenAttack;
             }
         }
         else
         {
+            
             timeBetweenAttack -= Time.deltaTime;
+            if (1f >= timeBetweenAttack)
+            {
+                StartCoroutine(GoingToAttack());
+            }
         }
+    }
+    private IEnumerator GoingToAttack()
+    {
+        enemy.bodyRenderer.color = new Color(enemy.bodyRenderer.color.r, enemy.bodyRenderer.color.g, enemy.bodyRenderer.color.b, 0.5f);
+        yield return new WaitForSeconds(0.2f);
+        enemy.bodyRenderer.color = new Color(enemy.bodyRenderer.color.r, enemy.bodyRenderer.color.g, enemy.bodyRenderer.color.b, 1f);
     }
 }
