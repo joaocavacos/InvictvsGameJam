@@ -9,7 +9,9 @@
 
         public override void Die()
         {
-            base.Die();
+            Player.instance.KillPlayer();
+            //base.Die();
+            //Dead animation
         }
     }
 }

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3270597507668529007}
   - component: {fileID: -6393274283546269613}
   - component: {fileID: 6684331745370017801}
+  - component: {fileID: -960395054867856824}
   m_Layer: 0
   m_Name: SpearEnemy
   m_TagString: Untagged
@@ -264,3 +265,16 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &-960395054867856824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224692728344441415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9790f8f3648307444acafb3e1b57342a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5

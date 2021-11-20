@@ -14,7 +14,7 @@ public class RangedAttack : MonoBehaviour
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = Player.instance.transform;
     }
 
     void Update()

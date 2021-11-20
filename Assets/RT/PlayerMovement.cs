@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : PlayerComponent
 {
     public float movementSpeed;
     private Vector2 movementDir;
@@ -41,5 +41,10 @@ public class PlayerMovement : MonoBehaviour
         {
             canMove = true;
         }
+    }
+
+    public override void OnDie()
+    {
+        
     }
 }

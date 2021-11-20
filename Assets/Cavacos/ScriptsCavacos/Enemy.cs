@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     {
         _aiPath = GetComponent<AIPath>();
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
-        _aiDestinationSetter.target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        _aiDestinationSetter.target = Player.instance.transform;
         _aiPath.maxSpeed = speed;
         _aiPath.slowdownDistance = stopRange;
         _aiPath.endReachedDistance = stopRange;

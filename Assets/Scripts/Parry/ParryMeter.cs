@@ -39,7 +39,7 @@ public class ParryMeter : MonoBehaviour
         {
             //acao de bloquear
             Debug.Log("Bloquear");
-            Player.ChangeState(States.BLOCK);
+            Player.instance.ChangeState(States.BLOCK);
             StartCoroutine(Cooldown(BlockDuration));
         }
     }
@@ -57,6 +57,6 @@ public class ParryMeter : MonoBehaviour
     private IEnumerator Cooldown(float dur)
     {
         yield return new WaitForSeconds(dur);
-        Player.ChangeState(States.IDLE);
+        Player.instance.ChangeState(States.IDLE);
     }
 }

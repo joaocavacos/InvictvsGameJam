@@ -11,7 +11,6 @@ public class MeeleAttack : MonoBehaviour
     private Transform target;
     
     [SerializeField] private Enemy enemy;
-    private PlayerHealth playerHealth;
     public Transform attackPos;
     public float startTimeBetweenAttack;
     public LayerMask playerMask;
@@ -19,8 +18,7 @@ public class MeeleAttack : MonoBehaviour
     
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        target = Player.instance.transform;
     }
 
     void Update()
@@ -30,11 +28,11 @@ public class MeeleAttack : MonoBehaviour
             if (Vector2.Distance(transform.position, target.position) <= enemy.stopRange && target != null)
             {
                 Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, enemy.stopRange, playerMask);
-
+                Debug.Log($"{gameObject.name} can attack {playerToDamage.Length} players");
                 for (int i = 0; i < playerToDamage.Length; i++)
                 {
                     //Attack player
-                    playerHealth.TakeDamage(enemy.damage);
+                    Player.instance.healthSystem.TakeDamage(enemy.damage);
                     Debug.Log("Player attacked by " + this.gameObject.name);
                 }
             }
@@ -46,7 +44,7 @@ public class MeeleAttack : MonoBehaviour
             timeBetweenAttack -= Time.deltaTime;
         }
         
-        Debug.Log("Player HP: " + playerHealth.health);
+        Debug.Log("Player HP: " + Player.instance.healthSystem.health);
     }
 
     private void OnDrawGizmos()

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerRoll : MonoBehaviour
+public class PlayerRoll : PlayerComponent
 {
     public float distanceRoll;
     public float timeToRoll;
@@ -13,14 +13,6 @@ public class PlayerRoll : MonoBehaviour
     Vector2 startPos;
     Vector2 dirRoll;
     Vector2 dirRolling;
-<<<<<<< Updated upstream
-    Rigidbody2D rb2D;
-    /*
-    [Header("Debugging")]
-    [SerializeField] private Transform indicatorDir;
-    */
-=======
->>>>>>> Stashed changes
     private void Start()
     {
         Player.OnChangeState.AddListener(CheckCanRoll);
@@ -41,7 +33,7 @@ public class PlayerRoll : MonoBehaviour
             Player.instance.rb2D.position = Vector2.Lerp(startPos, startPos + (dirRolling * distanceRoll), currentLerp);
             if (currentLerp>= timeToRoll)
             {
-                Player.ChangeState(States.IDLE);
+                Player.instance.ChangeState(States.IDLE);
             }
         }
     }
@@ -51,7 +43,7 @@ public class PlayerRoll : MonoBehaviour
         if (canRoll)
         {
             Debug.Log("Rolling");
-            Player.ChangeState(States.ROLL);
+            Player.instance.ChangeState(States.ROLL);
             currentLerp = 0;
             Player.instance.rb2D.velocity = Vector2.zero;
             
@@ -78,5 +70,10 @@ public class PlayerRoll : MonoBehaviour
         {
             canRoll = false;
         }
+    }
+
+    public override void OnDie()
+    {
+        
     }
 }

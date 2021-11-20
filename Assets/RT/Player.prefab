@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 7224786723615093931}
   - component: {fileID: 7224786723615093930}
   - component: {fileID: 7224786723615093925}
+  - component: {fileID: 1235861475567279527}
+  - component: {fileID: 4946580013262652669}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +86,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7224786723615093930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +102,8 @@ MonoBehaviour:
   body: {fileID: 7224786724977192153}
   direction: {fileID: 7224786724672107519}
   rb2D: {fileID: 7224786723615093931}
+  healthSystem: {fileID: 1235861475567279527}
+  isDead: 0
 --- !u!114 &7224786723615093925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +118,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceRoll: 5
   timeToRoll: 1
+--- !u!114 &1235861475567279527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224786723615093932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f9d54643f1456ba270832746803e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!58 &4946580013262652669
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224786723615093932}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.25651354}
+  serializedVersion: 2
+  m_Radius: 0.6113172
 --- !u!1 &7224786724672107516
 GameObject:
   m_ObjectHideFlags: 0

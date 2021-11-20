@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRotation : MonoBehaviour
+public class PlayerRotation : PlayerComponent
 {
     Vector3 mousePos;
     Vector3 directionRotation;
@@ -22,9 +22,18 @@ public class PlayerRotation : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(mousePos, 1f);
-        Gizmos.DrawLine(Player.instance.body.transform.position, mousePos);
+        if (Application.isPlaying)
+        {
+            Gizmos.DrawLine(Player.instance.body.transform.position, mousePos);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(Player.instance.body.transform.position, Player.instance.body.transform.position + directionRotation * 2);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(Player.instance.body.transform.position, Player.instance.body.transform.position + directionRotation * 2);
+        }
+        
+    }
+
+    public override void OnDie()
+    {
+        
     }
 }
