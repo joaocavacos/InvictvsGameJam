@@ -18,7 +18,7 @@ public class PlayerRoll : MonoBehaviour
     [Header("Debugging")]
     [SerializeField] private Transform indicatorDir;
     */
-    private void Awake()
+    private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         Player.OnChangeState.AddListener(CheckCanRoll);

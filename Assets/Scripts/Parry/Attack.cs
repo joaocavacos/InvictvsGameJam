@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
     public float atkDuration;
     public LayerMask collidingLayers = 9;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         Player._controls.Character.Attack.performed += Attack_performed;
     }
@@ -23,17 +23,18 @@ public class Attack : MonoBehaviour
             Debug.Log("Atacar");
             Player.ChangeState(States.ATK);
             StartCoroutine(Cooldown(atkDuration));
-
+            Atk(10, 0.5f);
         }
     }
 
-    private void Atk(float size, float Damage)
+    public void Atk(float size, float Damage)
     {
-        if (Physics2D.BoxCast(transform.position, Vector2.one * size, 30, transform.up, size, collidingLayers))
+        RaycastHit2D result = Physics2D.BoxCast(transform.position, Player._controls.Character.Direction.ReadValue<Vector2>().normalized * size, 30, transform.up, size, collidingLayers);
+        Debug.DrawRay(transform.position, Player._controls.Character.Direction.ReadValue<Vector2>().normalized * size, Color.red, 1f);
+        if (result.collider != null)
         {
-
+            result.transform.gameObject.GetComponent<Enemy>().health -= Damage;
         }
-
     }
 
     private IEnumerator Cooldown(float dur)

@@ -40,7 +40,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""id"": ""fc9d23db-76d3-4ffd-9369-4db9ec2146dc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Block"",
@@ -174,7 +174,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""id"": ""58bfc42b-7fbb-4275-8e8b-e7a552e3d253"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": ""NormalizeVector2,ScaleVector2"",
                     ""groups"": ""KeyboardAndMouse"",
                     ""action"": ""Direction"",
                     ""isComposite"": false,
@@ -195,7 +195,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""f42baade-38cd-4201-ab5b-8b988295d889"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",
                     ""action"": ""Roll"",
@@ -217,7 +217,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""7c7c619c-53ed-484d-8cfa-c3376df13141"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",
                     ""action"": ""Block"",

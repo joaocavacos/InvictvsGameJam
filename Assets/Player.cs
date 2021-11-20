@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
-   
+
     public static States state { get; private set; }
     public static Player instance { get; private set; }
     public static CharacterControls _controls { get; private set; }
     public static UnityEvent<States> OnChangeState = new UnityEvent<States>();
     private void Awake()
     {
-        if (instance!=null)
+        if (instance != null)
         {
             Destroy(gameObject);
         }
@@ -51,7 +51,10 @@ public class Player : MonoBehaviour
         _controls.Character.Style2.Disable();
         _controls.Character.Style3.Disable();
     }
-   
+    private void Update()
+    {
+        Debug.Log(_controls.Character.Direction.ReadValue<Vector2>());
+    }
 }
 public enum States
 {

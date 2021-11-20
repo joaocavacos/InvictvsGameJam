@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class ParryMeter : MonoBehaviour
 {
     /// <summary>
-    /// O meter só vai de 0 a 1
+    /// O meter só vai de 0 a 100
     /// </summary>
-    [Range(0f, 1f)]
+    [Range(0f, 100f)]
     private static float _meter;
 
     public float BlockDuration = 0.25f;
@@ -23,12 +23,12 @@ public class ParryMeter : MonoBehaviour
         set
         {
             if (value > 0f)
-                _meter = Mathf.Min(1, value);
+                _meter = Mathf.Min(100, value);
             else
                 _meter = 0;
         }
     }
-    private void Awake()
+    private void Start()
     {
 
         Player._controls.Character.Block.performed += Block_performed;
