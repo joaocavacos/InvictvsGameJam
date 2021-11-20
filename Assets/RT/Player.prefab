@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 323101623}
   - component: {fileID: 323101622}
   - component: {fileID: 323101621}
+  - component: {fileID: 4850143532579323469}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -102,6 +103,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4850143532579323469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323101619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7df3a6945a1cbd47b50d295fc174d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parrySlider: {fileID: 1991187197}
+  fillSlider: {fileID: 1792245246}
+  green: {r: 0.19215687, g: 0.654902, b: 0.2784314, a: 0}
+  blue: {r: 0.19215687, g: 0.6392157, b: 0.654902, a: 0}
+  darkBlue: {r: 0.2784314, g: 0.19215687, b: 0.654902, a: 0}
+  purple: {r: 0.654902, g: 0.19215687, b: 0.56078434, a: 0}
 --- !u!1 &429074288
 GameObject:
   m_ObjectHideFlags: 0
