@@ -10,25 +10,26 @@ public class ParryUpdater : MonoBehaviour
     public Slider parrySlider;
     public Image fillSlider;
 
-    void Start()
-    {
-        fillSlider.color = Color.white;
-    }
+    public Color green;
+    public Color blue;
+    public Color darkBlue;
+    public Color purple;
+
 
     void Update()
     {
         if (parrySlider.value <= 25)
         {
-            fillSlider.color = Color.green;
+            fillSlider.color = green;
         }else if (parrySlider.value > 25 && parrySlider.value <= 50)
         {
-            fillSlider.color = Color.blue;
+            fillSlider.color = blue;
         }else if (parrySlider.value > 50 && parrySlider.value <= 75)
         {
-            fillSlider.color = Color.red;
+            fillSlider.color = darkBlue;
         }else if (parrySlider.value > 75)
         {
-            fillSlider.color = Color.magenta;
+            fillSlider.color = purple;
         }
     }
 }
