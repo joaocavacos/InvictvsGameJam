@@ -8,15 +8,11 @@ public class HealthSystem : MonoBehaviour
 {
 
     public float health;
-
-    void Update()
-    {
-        if (health <= 0) Die();
-    }
-
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
+        Debug.Log($"Health {health}");
+        if (health <= 0) Die();
     }
 
     public virtual void Die()
