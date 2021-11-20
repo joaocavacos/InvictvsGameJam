@@ -16,6 +16,7 @@ public class Settings : MonoBehaviour
     public GameObject graphicsMenu;
     public GameObject controlsMenu;
     public GameObject settingsMenu;
+    public GameObject rebindMenu;
 
     [Header("Sound/Music Settings")]
     public Slider soundSlider;
@@ -107,6 +108,7 @@ public class Settings : MonoBehaviour
         generalMenu.SetActive(true);
         graphicsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        rebindMenu.SetActive(false);
     }
 
     public void OpenGraphics()
@@ -114,6 +116,7 @@ public class Settings : MonoBehaviour
         graphicsMenu.SetActive(true);
         generalMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        rebindMenu.SetActive(false);
     }
 
     public void OpenControls()
@@ -121,8 +124,17 @@ public class Settings : MonoBehaviour
         controlsMenu.SetActive(true);
         graphicsMenu.SetActive(false);
         generalMenu.SetActive(false);
+        rebindMenu.SetActive(false);
     }
 
+    public void OpenRebind()
+    {
+        rebindMenu.SetActive(true);
+        controlsMenu.SetActive(false);
+        graphicsMenu.SetActive(false);
+        generalMenu.SetActive(false);
+    }
+    
     public void Close()
     {
         settingsMenu.SetActive(false);

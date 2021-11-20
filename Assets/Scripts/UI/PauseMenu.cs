@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
@@ -8,13 +9,13 @@ public class PauseMenu : MonoBehaviour
 {
        
     public GameObject pauseMenu;
-    
+
     public void OpenPause()
     {
         pauseMenu.SetActive(true);
     }
 
-    public void ClosePause()
+    public void ResumeGame()
     {
         pauseMenu.SetActive(false);
     }

@@ -322,6 +322,44 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "HUDControls",
+            "id": "1a3de5cb-3232-4e97-b891-c7c88c0def7f",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "292dcd99-c9b5-4a60-b5dd-b63d8e49124b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f5dce952-17d9-41da-8b66-29157d2f791a",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Dualshock",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48e29e29-d54c-44a3-acf1-56a90694dd15",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
