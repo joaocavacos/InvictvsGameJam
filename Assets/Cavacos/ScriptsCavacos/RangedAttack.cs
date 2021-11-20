@@ -4,7 +4,27 @@ using UnityEngine;
 
 public class RangedAttack : MonoBehaviour
 {
+    [SerializeField] Enemy enemy;
 
+
+
+    private void Update()
+    {
+        if (Vector2.Distance(transform.position,Player.instance.transform.position)>=enemy.attackRange)
+        {
+            //Just walk
+        }
+        else if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.attackRange 
+            && Vector2.Distance(transform.position, Player.instance.transform.position) > enemy.stopRange)
+        {
+            //Charge
+        }
+        else
+        {
+            //Attack
+        }
+    }
+    /*
     private float timeBetweenAttack;
     private Transform target;
 
@@ -40,8 +60,10 @@ public class RangedAttack : MonoBehaviour
     }
     private IEnumerator GoingToAttack()
     {
-        enemy.bodyRenderer.color = new Color(enemy.bodyRenderer.color.r, enemy.bodyRenderer.color.g, enemy.bodyRenderer.color.b, 0.5f);
+        
         yield return new WaitForSeconds(0.2f);
-        enemy.bodyRenderer.color = new Color(enemy.bodyRenderer.color.r, enemy.bodyRenderer.color.g, enemy.bodyRenderer.color.b, 1f);
+        
     }
+    */
+
 }
