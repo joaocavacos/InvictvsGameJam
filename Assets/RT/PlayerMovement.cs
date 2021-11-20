@@ -45,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-    private void ChangedState(StateDebug s)
+    private void ChangedState(States s)
     {
-        if (s == StateDebug.Rolling || s==StateDebug.Attack)
+        if (s == States.ROLL || s==States.ATK)
         {
             canMove = false;
         }

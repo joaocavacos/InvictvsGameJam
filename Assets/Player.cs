@@ -5,10 +5,10 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
    
-    public static StateDebug state { get; private set; }
+    public static States state { get; private set; }
     public static Player instance { get; private set; }
     public static CharacterControls _controls { get; private set; }
-    public static UnityEvent<StateDebug> OnChangeState;
+    public static UnityEvent<States> OnChangeState;
     private void Awake()
     {
         if (instance!=null)
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         instance = this;
         _controls = new CharacterControls();
     }
-    public static void ChangeState(StateDebug state)
+    public static void ChangeState(States state)
     {
         OnChangeState?.Invoke(state);
     }
@@ -48,10 +48,10 @@ public class Player : MonoBehaviour
     }
    
 }
-public enum StateDebug
+public enum States
 {
-    Idle,
-    Rolling,
-    Parry,
-    Attack
+    IDLE,
+    ROLL,
+    BLOCK,
+    ATK
 }
