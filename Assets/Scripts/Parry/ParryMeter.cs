@@ -9,11 +9,11 @@ public class ParryMeter : MonoBehaviour
     /// O meter só vai de 0 a 1
     /// </summary>
     [Range(0f, 1f)]
-    private float _meter;
+    private static float _meter;
 
     public float BlockDuration = 0.25f;
 
-    public float Meter
+    public static float Meter
     {
         get
         {
