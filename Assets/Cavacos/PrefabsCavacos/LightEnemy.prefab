@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -6393274283546269613}
   - component: {fileID: 8489072398171420399}
   - component: {fileID: 4627637595831850505}
+  - component: {fileID: -5683150925099356049}
   m_Layer: 0
   m_Name: LightEnemy
   m_TagString: Untagged
@@ -238,6 +239,8 @@ MonoBehaviour:
 --- !u!95 &4627637595831850505
 Animator:
   serializedVersion: 3
+--- !u!114 &-5683150925099356049
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -254,6 +257,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9790f8f3648307444acafb3e1b57342a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
 --- !u!1 &6242964881289033941
 GameObject:
   m_ObjectHideFlags: 0

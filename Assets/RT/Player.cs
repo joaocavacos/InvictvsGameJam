@@ -1,32 +1,34 @@
+using Cavacos.ScriptsCavacos;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
-
+   
     public static States state { get; private set; }
     public static Player instance { get; private set; }
     public static CharacterControls _controls { get; private set; }
     public static UnityEvent<States> OnChangeState = new UnityEvent<States>();
+    public Transform body, direction;
+    public Rigidbody2D rb2D;
+    public PlayerHealth healthSystem;
+    public bool isDead = false;
     private void Awake()
     {
-        if (instance != null)
+        if (instance!=null)
         {
             Destroy(gameObject);
         }
         instance = this;
         _controls = new CharacterControls();
+        isDead = false;
     }
     private void Start()
-    {
+    {        
         ChangeState(States.IDLE);
     }
-    public static void ChangeState(States s)
-    {
-        state = s;
-        OnChangeState?.Invoke(s);
-    }
+    
     private void OnEnable()
     {
         _controls.Character.Movement.Enable();
@@ -51,9 +53,21 @@ public class Player : MonoBehaviour
         _controls.Character.Style2.Disable();
         _controls.Character.Style3.Disable();
     }
-    private void Update()
+    public void ChangeState(States s)
     {
-        Debug.Log(_controls.Character.Direction.ReadValue<Vector2>());
+        state = s;
+        OnChangeState?.Invoke(s);
+    }
+    public void KillPlayer()
+    {
+        var components = GetComponents<PlayerComponent>();
+        Debug.LogWarning($"Player components ammount : {components.Length}");
+        foreach (var c in components)
+        {
+            c.OnDie();
+            c.enabled = false;
+        }
+        isDead = true;
     }
 }
 public enum States

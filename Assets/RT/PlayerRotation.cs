@@ -2,33 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRotation : MonoBehaviour
+public class PlayerRotation : PlayerComponent
 {
     Vector3 mousePos;
     Vector3 directionRotation;
     public float rotationSpeed;
-    public Transform body;
-    private Rigidbody2D rb2D;
-    private void Awake()
-    {
-        rb2D = GetComponent<Rigidbody2D>();
-    }
     private void Update()
     {
-        //OLHAR PARA O RATO
-        /*
-        if (!_rotateWhereWalking) 
+        if (Player._controls.Character.Movement.ReadValue<Vector2>()!=Vector2.zero && Player.state != States.ROLL)
         {
-            directionRotation = Player._controls.Character.Direction.ReadValue<Vector2>();
-            float angle = Mathf.Atan2(directionRotation.y, directionRotation.x) * Mathf.Rad2Deg;
-            body.rotation = Quaternion.Lerp(body.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
-            Cursor.visible = true;
-        }
-        */
-        if (Player._controls.Character.Movement.ReadValue<Vector2>()!=Vector2.zero)
-        {
-            float angle = Mathf.Atan2(rb2D.velocity.normalized.y, rb2D.velocity.normalized.x) * Mathf.Rad2Deg;
-            body.rotation = Quaternion.Lerp(body.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
+            float angle = Mathf.Atan2(Player.instance.rb2D.velocity.normalized.y, Player.instance.rb2D.velocity.normalized.x) * Mathf.Rad2Deg;
+            Player.instance.body.rotation = Quaternion.Lerp(Player.instance.body.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
         }
         
         Cursor.visible = false;
@@ -38,9 +22,18 @@ public class PlayerRotation : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(mousePos, 1f);
-        Gizmos.DrawLine(body.transform.position, mousePos);
+        if (Application.isPlaying)
+        {
+            Gizmos.DrawLine(Player.instance.body.transform.position, mousePos);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(body.transform.position, body.transform.position + directionRotation * 2);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(Player.instance.body.transform.position, Player.instance.body.transform.position + directionRotation * 2);
+        }
+        
+    }
+
+    public override void OnDie()
+    {
+        
     }
 }

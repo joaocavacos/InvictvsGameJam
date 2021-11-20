@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerRoll : MonoBehaviour
+public class PlayerRoll : PlayerComponent
 {
     public float distanceRoll;
     public float timeToRoll;
@@ -13,14 +13,8 @@ public class PlayerRoll : MonoBehaviour
     Vector2 startPos;
     Vector2 dirRoll;
     Vector2 dirRolling;
-    Rigidbody2D rb2D;
-    /*
-    [Header("Debugging")]
-    [SerializeField] private Transform indicatorDir;
-    */
     private void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
         Player.OnChangeState.AddListener(CheckCanRoll);
         Player._controls.Character.Roll.performed += TriggerRoll;
     }
@@ -29,19 +23,17 @@ public class PlayerRoll : MonoBehaviour
         if (Player._controls.Character.Direction.ReadValue<Vector2>() != Vector2.zero )
         {
             dirRoll = Player._controls.Character.Direction.ReadValue<Vector2>().normalized;
-            /*
-            float angle = Mathf.Atan2(dirRoll.y, dirRoll.x) * Mathf.Rad2Deg;
-            indicatorDir.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            */
         }
         if (Player.state == States.ROLL)
         {
             Debug.Log("RollingUpdate");
             currentLerp += Time.deltaTime/timeToRoll;
-            rb2D.position = Vector2.Lerp(startPos, startPos + (dirRolling * distanceRoll), currentLerp);
+            
+
+            Player.instance.rb2D.position = Vector2.Lerp(startPos, startPos + (dirRolling * distanceRoll), currentLerp);
             if (currentLerp>= timeToRoll)
             {
-                Player.ChangeState(States.IDLE);
+                Player.instance.ChangeState(States.IDLE);
             }
         }
     }
@@ -51,13 +43,20 @@ public class PlayerRoll : MonoBehaviour
         if (canRoll)
         {
             Debug.Log("Rolling");
-            Player.ChangeState(States.ROLL);
+            Player.instance.ChangeState(States.ROLL);
             currentLerp = 0;
-            rb2D.velocity = Vector2.zero;
+            Player.instance.rb2D.velocity = Vector2.zero;
             
             
-            startPos = rb2D.position;
+            startPos = Player.instance.rb2D.position;
             dirRolling = dirRoll;
+
+            //Locks rotation at that angle
+            float angle = Mathf.Atan2(dirRolling.y, dirRolling.x) * Mathf.Rad2Deg;
+            Player.instance.body.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+
+
+
         }
     }
 
@@ -71,5 +70,10 @@ public class PlayerRoll : MonoBehaviour
         {
             canRoll = false;
         }
+    }
+
+    public override void OnDie()
+    {
+        
     }
 }

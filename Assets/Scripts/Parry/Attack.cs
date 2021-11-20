@@ -21,7 +21,7 @@ public class Attack : MonoBehaviour
         {
             //atacar
             Debug.Log("Atacar");
-            Player.ChangeState(States.ATK);
+            Player.instance.ChangeState(States.ATK);
             StartCoroutine(Cooldown(atkDuration));
             Atk(10, 0.5f);
         }
@@ -40,7 +40,7 @@ public class Attack : MonoBehaviour
     private IEnumerator Cooldown(float dur)
     {
         yield return new WaitForSeconds(dur);
-        Player.ChangeState(States.IDLE);
+        Player.instance.ChangeState(States.IDLE);
     }
 
 }
