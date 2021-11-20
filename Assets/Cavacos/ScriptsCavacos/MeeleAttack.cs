@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cavacos.ScriptsCavacos;
 using UnityEngine;
 
 public class MeeleAttack : MonoBehaviour
@@ -10,7 +11,7 @@ public class MeeleAttack : MonoBehaviour
     private Transform target;
     
     [SerializeField] private Enemy enemy;
-    private HealthSystem _healthSystem;
+    private PlayerHealth playerHealth;
     public Transform attackPos;
     public float startTimeBetweenAttack;
     public LayerMask playerMask;
@@ -19,21 +20,21 @@ public class MeeleAttack : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        _healthSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     void Update()
     {
         if (timeBetweenAttack <= 0)
         {
-            if (Vector2.Distance(transform.position, target.position) <= enemy.stopRange)
+            if (Vector2.Distance(transform.position, target.position) <= enemy.stopRange && target != null)
             {
                 Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, enemy.stopRange, playerMask);
 
                 for (int i = 0; i < playerToDamage.Length; i++)
                 {
                     //Attack player
-                    _healthSystem.TakeDamage(enemy.damage);
+                    playerHealth.TakeDamage(enemy.damage);
                     Debug.Log("Player attacked by " + this.gameObject.name);
                 }
             }
@@ -45,7 +46,7 @@ public class MeeleAttack : MonoBehaviour
             timeBetweenAttack -= Time.deltaTime;
         }
         
-        Debug.Log("Player HP: " + _healthSystem.health);
+        Debug.Log("Player HP: " + playerHealth.health);
     }
 
     private void OnDrawGizmos()

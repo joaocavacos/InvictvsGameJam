@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a692870334cc34596a4bda401385d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 5
   speed: 6
   health: 30
   stopRange: 2
@@ -229,9 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4224692728344441416}
-  _healthSystem: {fileID: 6486468116042042675, guid: 067663a6ec3f2454ba8be370a2d021a1, type: 3}
   attackPos: {fileID: 7262681596930438411}
-  startTimeBetweenAttack: 0.2
+  startTimeBetweenAttack: 1
   playerMask:
     serializedVersion: 2
     m_Bits: 64
