@@ -64,7 +64,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 20
-  body: {fileID: 7224786723615093934}
 --- !u!50 &7224786723615093931
 Rigidbody2D:
   serializedVersion: 4
@@ -98,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f371d5a344e114a90e76f62c68d237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 7224786724977192153}
+  direction: {fileID: 7224786724672107519}
+  rb2D: {fileID: 7224786723615093931}
 --- !u!114 &7224786723615093925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceRoll: 5
   timeToRoll: 1
-  indicatorDir: {fileID: 7224786724672107519}
 --- !u!1 &7224786724672107516
 GameObject:
   m_ObjectHideFlags: 0

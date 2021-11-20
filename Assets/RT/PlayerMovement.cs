@@ -7,20 +7,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed;
     private Vector2 movementDir;
-    private Rigidbody2D rb2d;
     public float lerpTime;
     Vector2 input;
     bool canMove;
 
     private void Awake()
     {
-        rb2d = GetComponent<Rigidbody2D>();
         movementDir = Vector2.zero;
         Player.OnChangeState.AddListener(ChangedState);
     }
-
-   
-
     private void Update()
     {
        
@@ -32,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
             //Change de movement direction for smoother movement
             movementDir = Vector2.Lerp(movementDir, input, Time.deltaTime * lerpTime);
             //change velocity to the rigidbody lerping for not snapping movement
-            rb2d.velocity = movementSpeed * movementDir;
+            Player.instance.rb2D.velocity = movementSpeed * movementDir;
         }
         
     }
