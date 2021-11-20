@@ -228,5 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4224692728344441416}
+  _healthSystem: {fileID: 6486468116042042675, guid: 067663a6ec3f2454ba8be370a2d021a1, type: 3}
   startTimeBetweenAttack: 3
   arrowObj: {fileID: 6737749750468733530, guid: baa442e7b66221f44a97f5d87ca3e772, type: 3}

@@ -10,6 +10,7 @@ public class MeeleAttack : MonoBehaviour
     private Transform target;
     
     [SerializeField] private Enemy enemy;
+    private HealthSystem _healthSystem;
     public Transform attackPos;
     public float startTimeBetweenAttack;
     public LayerMask playerMask;
@@ -18,6 +19,7 @@ public class MeeleAttack : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        _healthSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
     }
 
     void Update()
@@ -31,6 +33,7 @@ public class MeeleAttack : MonoBehaviour
                 for (int i = 0; i < playerToDamage.Length; i++)
                 {
                     //Attack player
+                    _healthSystem.TakeDamage(enemy.damage);
                     Debug.Log("Player attacked by " + this.gameObject.name);
                 }
             }
@@ -41,6 +44,8 @@ public class MeeleAttack : MonoBehaviour
         {
             timeBetweenAttack -= Time.deltaTime;
         }
+        
+        Debug.Log("Player HP: " + _healthSystem.health);
     }
 
     private void OnDrawGizmos()
