@@ -31,7 +31,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""6ed57682-a25d-435e-adcb-e71cb2d36eff"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""interactions"": """"
                 },
                 {
@@ -40,7 +40,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""id"": ""fc9d23db-76d3-4ffd-9369-4db9ec2146dc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Block"",

@@ -9,10 +9,6 @@ public class PlayerRotation : MonoBehaviour
     public float rotationSpeed;
     public Transform body;
     private Rigidbody2D rb2D;
-
-
-    [Header("Debugging")]
-    [SerializeField] private bool _rotateWhereWalking;
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
