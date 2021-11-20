@@ -25,11 +25,11 @@ public class Enemy : MonoBehaviour
         _aiPath.endReachedDistance = stopRange;
     }
 
-    public void TakeDamage(float amount){
+    public virtual void TakeDamage(float amount){
         health -= amount;
     }
 
-    public void Die(){
+    public virtual void Die(){
         if(health <= 0){
             Destroy(this.gameObject);
         }
