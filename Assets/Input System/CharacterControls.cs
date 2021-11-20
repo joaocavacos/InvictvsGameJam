@@ -215,33 +215,11 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7c7c619c-53ed-484d-8cfa-c3376df13141"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardAndMouse"",
-                    ""action"": ""Block"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ff4019bf-2e41-4def-894b-a8e3aa30984f"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Dualshock"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bf192f66-472a-4d76-b62a-55b6a6f862a8"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardAndMouse"",
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -331,6 +309,28 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",
                     ""action"": ""Style3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf192f66-472a-4d76-b62a-55b6a6f862a8"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse"",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c7c619c-53ed-484d-8cfa-c3376df13141"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
