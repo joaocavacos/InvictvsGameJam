@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    [SerializeField] private Enemy enemy;
-    private PlayerHealth playerHealth;
-    private Transform player;
+    private Enemy enemy;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     
@@ -17,27 +15,36 @@ public class Arrow : MonoBehaviour
     public float distance;
     public LayerMask isPlayer;
 
-    void Start()
+    private float currentTime;
+
+    void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody2D>();
-        moveDirection = (player.position - transform.position).normalized * arrowSpeed;
+    }
+    public void Setup(Vector2 dir, Enemy e)
+    {
+        enemy = e;
+        moveDirection = dir.normalized * arrowSpeed;
         rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
-        Invoke("DestroyArrow", disappearTime);
+        currentTime = 0f;
     }
 
     void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, isPlayer);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, moveDirection.normalized, distance, isPlayer);
         if (hitInfo.collider != null)
         {
             if (hitInfo.collider.CompareTag("Player") && hitInfo.collider != null)
             {
-                Debug.Log("Player hit");
-                playerHealth.TakeDamage(enemy.damage);
+                Player.instance.healthSystem.TakeDamage(enemy.damage);
                 DestroyArrow();
             }
+        }
+        currentTime += Time.deltaTime;
+        if (currentTime>=disappearTime)
+        {
+            //Fazer Pool Depois
+            DestroyArrow();
         }
     }
 

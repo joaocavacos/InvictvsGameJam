@@ -9,11 +9,11 @@ public class Enemy : MonoBehaviour
 
     public float damage;
     public float speed;
-    public float health;
     public float stopRange;
     public float attackRange;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestinationSetter;
+    public SpriteRenderer bodyRenderer;
 
     private void Awake()
     {
@@ -25,14 +25,6 @@ public class Enemy : MonoBehaviour
         _aiPath.endReachedDistance = stopRange;
     }
 
-    public virtual void TakeDamage(float amount){
-        health -= amount;
-    }
-
-    public virtual void Die(){
-        if(health <= 0){
-            Destroy(this.gameObject);
-        }
-    }
+    
 
 }

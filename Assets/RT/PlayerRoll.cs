@@ -11,8 +11,10 @@ public class PlayerRoll : PlayerComponent
     private float currentLerp;
     bool canRoll;
     Vector2 startPos;
+    Vector2 finalPos;
     Vector2 dirRoll;
-    Vector2 dirRolling;
+
+    [SerializeField] LayerMask wallLayer;
     private void Start()
     {
         Player.OnChangeState.AddListener(CheckCanRoll);
@@ -24,35 +26,45 @@ public class PlayerRoll : PlayerComponent
         {
             dirRoll = Player._controls.Character.Direction.ReadValue<Vector2>().normalized;
         }
-        if (Player.state == States.ROLL)
+        if (Player.instance.state == States.ROLL)
         {
-            Debug.Log("RollingUpdate");
+            //Debug.Log("RollingUpdate");
             currentLerp += Time.deltaTime/timeToRoll;
             
 
-            Player.instance.rb2D.position = Vector2.Lerp(startPos, startPos + (dirRolling * distanceRoll), currentLerp);
-            if (currentLerp>= timeToRoll)
+            Player.instance.rb2D.position = Vector2.Lerp(startPos, finalPos, currentLerp);
+            if (currentLerp>= 1)
             {
                 Player.instance.ChangeState(States.IDLE);
+                Player.instance.animator.SetBool("Roll", false);
             }
         }
     }
     private void TriggerRoll(InputAction.CallbackContext obj)
     {
-        Debug.Log("Trigger Roll");
-        if (canRoll)
+        //Debug.Log("Trigger Roll");
+        if (canRoll && Player.instance.state != States.ROLL)
         {
-            Debug.Log("Rolling");
+            //Debug.Log("Rolling");
             Player.instance.ChangeState(States.ROLL);
+            Player.instance.animator.SetBool("Roll", true);
             currentLerp = 0;
             Player.instance.rb2D.velocity = Vector2.zero;
             
             
             startPos = Player.instance.rb2D.position;
-            dirRolling = dirRoll;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirRoll.normalized, distanceRoll, wallLayer);
+            if (hit)
+            {
+                finalPos = hit.point;
+            }
+            else
+            {
+                finalPos = startPos + (dirRoll * distanceRoll);
+            }
 
             //Locks rotation at that angle
-            float angle = Mathf.Atan2(dirRolling.y, dirRolling.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(dirRoll.y, dirRoll.x) * Mathf.Rad2Deg;
             Player.instance.body.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
 
@@ -62,7 +74,7 @@ public class PlayerRoll : PlayerComponent
 
     private void CheckCanRoll(States s)
     {
-        if (s!= States.ATK || s!= States.BLOCK || s!= States.ROLL)
+        if (s==States.IDLE)
         {
             canRoll = true;
         }
