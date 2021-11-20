@@ -825,7 +825,7 @@ public class AstarPath : VersionedMonoBehaviour {
 	/// See: PathLog
 	/// See: Pathfinding.Path.DebugString
 	/// </summary>
-	private void LogPathResults (Path path) {
+	/*private void LogPathResults (Path path) {
 		if (logPathResults != PathLog.None && (path.error || logPathResults != PathLog.OnlyErrors)) {
 			string debug = (path as IPathInternals).DebugString(logPathResults);
 
@@ -838,7 +838,7 @@ public class AstarPath : VersionedMonoBehaviour {
 			}
 		}
 	}
-
+*/
 	/// <summary>
 	/// Checks if any work items need to be executed
 	/// then runs pathfinding for a while (if not using multithreading because
@@ -1283,7 +1283,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		};
 
 		pathProcessor.OnPathPostSearch += path => {
-			LogPathResults(path);
+			//LogPathResults(path);
 			var tmp = OnPathPostSearch;
 			if (tmp != null) tmp(path);
 		};
@@ -1780,9 +1780,10 @@ public class AstarPath : VersionedMonoBehaviour {
 
 		System.GC.Collect();
 
-		if (logPathResults != PathLog.None && logPathResults != PathLog.OnlyErrors) {
+		/*if (logPathResults != PathLog.None && logPathResults != PathLog.OnlyErrors) {
 			Debug.Log("Scanning - Process took "+(lastScanTime*1000).ToString("0")+" ms to complete");
 		}
+		*/
 	}
 
 	IEnumerable<Progress> ScanGraph (NavGraph graph) {

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7335158737530117492}
   - component: {fileID: 3270597507668529007}
   - component: {fileID: -6393274283546269613}
+  - component: {fileID: -565749163432326368}
   m_Layer: 0
   m_Name: ArchEnemy
   m_TagString: Untagged
@@ -102,7 +103,8 @@ MonoBehaviour:
   damage: 50
   speed: 4
   health: 50
-  attackRange: 4
+  stopRange: 6
+  attackRange: 6
 --- !u!114 &4481895736240580167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,3 +215,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-565749163432326368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224692728344441415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b555f95666e273438708f5b6e8627d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4224692728344441416}
+  startTimeBetweenAttack: 3
+  arrowObj: {fileID: 6737749750468733530, guid: baa442e7b66221f44a97f5d87ca3e772, type: 3}

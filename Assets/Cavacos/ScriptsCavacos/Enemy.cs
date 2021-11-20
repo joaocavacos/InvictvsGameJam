@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float damage;
     public float speed;
     public float health;
+    public float stopRange;
     public float attackRange;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestinationSetter;
@@ -20,8 +21,8 @@ public class Enemy : MonoBehaviour
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
         _aiDestinationSetter.target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _aiPath.maxSpeed = speed;
-        _aiPath.slowdownDistance = attackRange;
-        _aiPath.endReachedDistance = attackRange;
+        _aiPath.slowdownDistance = stopRange;
+        _aiPath.endReachedDistance = stopRange;
     }
 
     public void TakeDamage(float amount){
