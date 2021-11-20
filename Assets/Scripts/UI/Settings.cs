@@ -8,15 +8,14 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ButtonBehaviour : MonoBehaviour
+public class Settings : MonoBehaviour
 {
     
-    [Header("Menu Objects")]
-    public GameObject mainMenu;
-    public GameObject settingsMenu;
-    public GameObject creditsMenu;
+    [Header("Settings Menu Objects")]
     public GameObject generalMenu;
     public GameObject graphicsMenu;
+    public GameObject controlsMenu;
+    public GameObject settingsMenu;
 
     [Header("Sound/Music Settings")]
     public Slider soundSlider;
@@ -103,49 +102,35 @@ public class ButtonBehaviour : MonoBehaviour
         PlayerPrefs.SetFloat(musicVolume, musicSlider.value);
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Application has quit");
-    }
-
-    public void StartGame(string scene)
-    {
-        SceneManager.LoadScene(scene);
-    }
-
-    public void OpenSettings()
-    {
-        mainMenu.SetActive(false);
-        settingsMenu.SetActive(true);
-        creditsMenu.SetActive(false);
-    }
-
-    public void OpenCredits()
-    {
-        mainMenu.SetActive(false);
-        settingsMenu.SetActive(false);
-        creditsMenu.SetActive(true);
-    }
-
-    public void CancelMain()
-    {
-        mainMenu.SetActive(true);
-        settingsMenu.SetActive(false);
-        creditsMenu.SetActive(false);
-    }
-
     public void OpenGeneral()
     {
         generalMenu.SetActive(true);
         graphicsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     public void OpenGraphics()
     {
         graphicsMenu.SetActive(true);
         generalMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
-    
-    
+
+    public void OpenControls()
+    {
+        controlsMenu.SetActive(true);
+        graphicsMenu.SetActive(false);
+        generalMenu.SetActive(false);
+    }
+
+    public void Close()
+    {
+        settingsMenu.SetActive(false);
+    }
+
+    public void Open()
+    {
+        settingsMenu.SetActive(true);
+    }
+
 }
