@@ -41,3 +41,5 @@ Packages/packages-lock.json
 .vsconfig
 ProjectSettings/ProjectSettings.asset
 Packages/manifest.json
+*.log
+*.log
