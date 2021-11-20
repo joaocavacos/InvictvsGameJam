@@ -23,16 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        /* //Old input System
-
-        //Get input
-        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        //Change de movement direction for smoother movement
-        movementDir = Vector2.Lerp(movementDir, input, Time.deltaTime * lerpTime);
-        //change velocity to the rigidbody lerping for not snapping movement
-        rb2d.velocity = movementSpeed * movementDir;
-        
-        */
+       
         if (canMove)
         {
             //Get input

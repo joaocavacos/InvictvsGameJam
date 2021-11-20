@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public static States state { get; private set; }
     public static Player instance { get; private set; }
     public static CharacterControls _controls { get; private set; }
-    public static UnityEvent<States> OnChangeState;
+    public static UnityEvent<States> OnChangeState = new UnityEvent<States>();
     private void Awake()
     {
         if (instance!=null)
@@ -18,9 +18,14 @@ public class Player : MonoBehaviour
         instance = this;
         _controls = new CharacterControls();
     }
-    public static void ChangeState(States state)
+    private void Start()
     {
-        OnChangeState?.Invoke(state);
+        ChangeState(States.IDLE);
+    }
+    public static void ChangeState(States s)
+    {
+        state = s;
+        OnChangeState?.Invoke(s);
     }
     private void OnEnable()
     {
