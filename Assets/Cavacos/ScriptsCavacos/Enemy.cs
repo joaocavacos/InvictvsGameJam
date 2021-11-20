@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,8 +14,9 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestinationSetter;
-    public SpriteRenderer bodyRenderer;
-
+    public EnemyState state;
+    public UnityEvent<EnemyState> OnChangeState = new UnityEvent<EnemyState>();
+    public bool isDead;
     private void Awake()
     {
         _aiPath = GetComponent<AIPath>();
@@ -23,8 +25,20 @@ public class Enemy : MonoBehaviour
         _aiPath.maxSpeed = speed;
         _aiPath.slowdownDistance = stopRange;
         _aiPath.endReachedDistance = stopRange;
+        isDead = false;
     }
 
-    
+    public void ChangeState(EnemyState s)
+    {
+        state = s;
+        OnChangeState?.Invoke(s);
+    }
 
+}
+public enum EnemyState
+{
+    IDLE,
+    READY,
+    ATTACK,
+    DEAD
 }
