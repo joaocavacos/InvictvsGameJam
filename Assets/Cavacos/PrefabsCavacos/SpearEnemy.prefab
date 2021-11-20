@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3270597507668529007}
   - component: {fileID: -6393274283546269613}
   - component: {fileID: 6684331745370017801}
+  - component: {fileID: 85877860219844956}
   - component: {fileID: -960395054867856824}
   m_Layer: 0
   m_Name: SpearEnemy
@@ -265,6 +266,25 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!95 &85877860219844956
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224692728344441415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad45236e852d8974884c7ef37571f7f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-960395054867856824
 MonoBehaviour:
   m_ObjectHideFlags: 0
