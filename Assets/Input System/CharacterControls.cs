@@ -335,6 +335,44 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""HUDControls"",
+            ""id"": ""1a3de5cb-3232-4e97-b891-c7c88c0def7f"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""292dcd99-c9b5-4a60-b5dd-b63d8e49124b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f5dce952-17d9-41da-8b66-29157d2f791a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Dualshock"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48e29e29-d54c-44a3-acf1-56a90694dd15"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -378,6 +416,9 @@ public class @CharacterControls : IInputActionCollection, IDisposable
         m_Character_Style1 = m_Character.FindAction("Style1", throwIfNotFound: true);
         m_Character_Style2 = m_Character.FindAction("Style2", throwIfNotFound: true);
         m_Character_Style3 = m_Character.FindAction("Style3", throwIfNotFound: true);
+        // HUDControls
+        m_HUDControls = asset.FindActionMap("HUDControls", throwIfNotFound: true);
+        m_HUDControls_Pause = m_HUDControls.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -520,6 +561,39 @@ public class @CharacterControls : IInputActionCollection, IDisposable
         }
     }
     public CharacterActions @Character => new CharacterActions(this);
+
+    // HUDControls
+    private readonly InputActionMap m_HUDControls;
+    private IHUDControlsActions m_HUDControlsActionsCallbackInterface;
+    private readonly InputAction m_HUDControls_Pause;
+    public struct HUDControlsActions
+    {
+        private @CharacterControls m_Wrapper;
+        public HUDControlsActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_HUDControls_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_HUDControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HUDControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IHUDControlsActions instance)
+        {
+            if (m_Wrapper.m_HUDControlsActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_HUDControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_HUDControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_HUDControlsActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_HUDControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public HUDControlsActions @HUDControls => new HUDControlsActions(this);
     private int m_DualshockSchemeIndex = -1;
     public InputControlScheme DualshockScheme
     {
@@ -549,5 +623,9 @@ public class @CharacterControls : IInputActionCollection, IDisposable
         void OnStyle1(InputAction.CallbackContext context);
         void OnStyle2(InputAction.CallbackContext context);
         void OnStyle3(InputAction.CallbackContext context);
+    }
+    public interface IHUDControlsActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }
