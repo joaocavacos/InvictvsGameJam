@@ -25,28 +25,39 @@ public class MeeleAttack : MonoBehaviour
     {
         if (timeBetweenAttack <= 0)
         {
+            //CAN ATTACK
             if (Vector2.Distance(transform.position, target.position) <= enemy.stopRange && target != null)
             {
+                //IN RANGE - ATTACKS
                 Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, enemy.stopRange, playerMask);
-                Debug.Log($"{gameObject.name} can attack {playerToDamage.Length} players");
+                //Debug.Log($"{gameObject.name} can attack {playerToDamage.Length} players");
                 for (int i = 0; i < playerToDamage.Length; i++)
                 {
                     //Attack player
                     Player.instance.healthSystem.TakeDamage(enemy.damage);
-                    Debug.Log("Player attacked by " + this.gameObject.name);
                 }
+                timeBetweenAttack = startTimeBetweenAttack;
             }
 
-            timeBetweenAttack = startTimeBetweenAttack;
+            
         }
         else
         {
+            //COOLDOWN
             timeBetweenAttack -= Time.deltaTime;
+            if (1f >= timeBetweenAttack)
+            {
+                StartCoroutine(GoingToAttack());
+            }
         }
         
-        Debug.Log("Player HP: " + Player.instance.healthSystem.health);
     }
-
+    private IEnumerator GoingToAttack()
+    {
+        enemy.bodyRenderer.color = new Color(enemy.bodyRenderer.color.r, enemy.bodyRenderer.color.g, enemy.bodyRenderer.color.b, 0.5f);
+        yield return new WaitForSeconds(0.2f);
+        enemy.bodyRenderer.color = new Color(enemy.bodyRenderer.color.r, enemy.bodyRenderer.color.g, enemy.bodyRenderer.color.b, 1f);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
