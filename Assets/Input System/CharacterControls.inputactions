@@ -351,7 +351,7 @@
                 {
                     "name": "",
                     "id": "48e29e29-d54c-44a3-acf1-56a90694dd15",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardAndMouse",

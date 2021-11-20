@@ -10,11 +10,6 @@ public class PauseMenu : MonoBehaviour
        
     public GameObject pauseMenu;
 
-    void Update()
-    {
-        //check for input, and call OpenPause()
-    }
-
     public void OpenPause()
     {
         pauseMenu.SetActive(true);
