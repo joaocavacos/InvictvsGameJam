@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3270597507668529007}
   - component: {fileID: -6393274283546269613}
   - component: {fileID: -565749163432326368}
+  - component: {fileID: 5732546467390535783}
   m_Layer: 0
   m_Name: ArchEnemy
   m_TagString: Untagged
@@ -230,3 +231,22 @@ MonoBehaviour:
   enemy: {fileID: 4224692728344441416}
   startTimeBetweenAttack: 3
   arrowObj: {fileID: 6737749750468733530, guid: baa442e7b66221f44a97f5d87ca3e772, type: 3}
+--- !u!95 &5732546467390535783
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224692728344441415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 42ecacbd87e8c4d4aa47809855000983, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
