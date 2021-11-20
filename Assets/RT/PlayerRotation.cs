@@ -19,22 +19,24 @@ public class PlayerRotation : MonoBehaviour
     }
     private void Update()
     {
-        if (!_rotateWhereWalking)
+        //OLHAR PARA O RATO
+        /*
+        if (!_rotateWhereWalking) 
         {
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            directionRotation = (mousePos - body.transform.position).normalized;
+            directionRotation = Player._controls.Character.Direction.ReadValue<Vector2>();
             float angle = Mathf.Atan2(directionRotation.y, directionRotation.x) * Mathf.Rad2Deg;
             body.rotation = Quaternion.Lerp(body.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
             Cursor.visible = true;
         }
-        else
+        */
+        if (Player._controls.Character.Movement.ReadValue<Vector2>()!=Vector2.zero)
         {
             float angle = Mathf.Atan2(rb2D.velocity.normalized.y, rb2D.velocity.normalized.x) * Mathf.Rad2Deg;
-            body.rotation = Quaternion.Lerp(body.rotation, Quaternion.AngleAxis(angle-90, Vector3.forward), Time.deltaTime * rotationSpeed);
-            Cursor.visible = false;
+            body.rotation = Quaternion.Lerp(body.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
         }
-
         
+        Cursor.visible = false;
+
     }
     private void OnDrawGizmos()
     {
