@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &48815492
 Transform:
   m_ObjectHideFlags: 0
@@ -1325,7 +1325,7 @@ MonoBehaviour:
     Sprite
     Artist
 
-    Joao Castanheira
+    Jose Castanheira
 
 
     Sound Designer
@@ -1345,7 +1345,7 @@ MonoBehaviour:
 
     Jose Morais
 
-    Joao Castanheira
+    Jose Castanheira
 
     Ricardo
     Teixeira'
@@ -2599,7 +2599,7 @@ MonoBehaviour:
     Sprite
     Artist
 
-    Joao Castanheira
+    Jose Castanheira
 
 
     Sound Designer
@@ -2619,7 +2619,7 @@ MonoBehaviour:
 
     Jose Morais
 
-    Joao Castanheira
+    Jose Castanheira
 
     Ricardo
     Teixeira'
@@ -3588,7 +3588,7 @@ MonoBehaviour:
     Sprite
     Artist
 
-    Joao Castanheira
+    Jose Castanheira
 
 
     Sound Designer
@@ -3608,7 +3608,7 @@ MonoBehaviour:
 
     Jose Morais
 
-    Joao Castanheira
+    Jose Castanheira
 
     Ricardo
     Teixeira'
