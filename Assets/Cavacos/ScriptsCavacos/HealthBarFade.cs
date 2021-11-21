@@ -12,6 +12,7 @@ public class HealthBarFade : MonoBehaviour
     private Image damageBarImage;
     private Color damageColor;
     private float fadeTime;
+    public PlayerHealth hp;
 
     void Awake()
     {
@@ -19,18 +20,18 @@ public class HealthBarFade : MonoBehaviour
         damageBarImage = transform.Find("DamageBar").GetComponent<Image>();
         damageColor = damageBarImage.color;
         damageColor.a = 0f;
-        damageBarImage.color = damageColor;
+
     }
 
     private void Update()
     {
-        if (damageColor.a > 0)
+        if (hp.health > damageBarImage.fillAmount)
         {
             fadeTime -= Time.deltaTime;
             if (fadeTime < 0)
             {
-                float fadeAmount = 2.5f;
-                damageColor.a = fadeAmount * Time.deltaTime;
+                float fadeAmount = 1f;
+                damageColor.a -= fadeAmount * Time.deltaTime;
                 damageBarImage.color = damageColor;
             }
         }
