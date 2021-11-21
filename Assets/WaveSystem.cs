@@ -12,16 +12,15 @@ public class WaveSystem : MonoBehaviour
     private int currentWave;
     [Header("Enemies")]
     public List<GameObject> typesOfEnemies = new List<GameObject>();
-    private int amountToSpawn;
-    private List<Enemy> enemiesSpawned = new List<Enemy>();
+    public List<int> Values = new List<int>();
     [SerializeField] int limitEnemiesAlive;
-    bool canSpawn;
 
     [Header("Screens")]
     [SerializeField] private TextMeshProUGUI enemiesAlive;
     public GameObject introScreen;
     public GameObject nextWaveScreen;
-    
+    bool waiting;
+    public List<Enemy> currents = new List<Enemy>();
 
     private void Start()
     {
@@ -29,15 +28,7 @@ public class WaveSystem : MonoBehaviour
         //Show Intro
         StartCoroutine(ShowIntro());
     }
-    private void Update()
-    {
-        if (canSpawn)
-        {
-            Spawn();
-            Checker();
-            enemiesAlive.text = enemiesSpawned.Count(e => !e.isDead).ToString();
-        }
-    }
+
 
     private IEnumerator ShowIntro()
     {
@@ -51,42 +42,59 @@ public class WaveSystem : MonoBehaviour
 
         //Show wave
         StartCoroutine(NextWave());
+        StartCoroutine(CheckAlive());
     }
     private IEnumerator NextWave()
     {
+        waiting = true;
         currentWave += 1;
-        if (currentWave % 5 ==0)
+        if (currentWave % 5 == 0)
         {
             limitEnemiesAlive++;
         }
-        amountToSpawn = currentWave + Mathf.RoundToInt( currentWave * 0.5f);
+
         //Show wave
         enemiesAlive.gameObject.SetActive(false);
         nextWaveScreen.SetActive(true);
         nextWaveScreen.transform.Find("text").GetComponent<TextMeshProUGUI>().text = $"WAVE {currentWave}";
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         enemiesAlive.gameObject.SetActive(true);
         nextWaveScreen.SetActive(false);
+        MakeWave();
+        waiting = false;
 
-
-        //Disable Wave and Spawn
-        canSpawn = true;
     }
-    private void Spawn()
+
+    private void MakeWave()
     {
-        if (enemiesSpawned.Count(e=> !e.isDead)<limitEnemiesAlive && enemiesSpawned.Count()< amountToSpawn)
+        int res = Values[UnityEngine.Random.Range(0, Values.Count)];
+        for (int i = 0; i <= currentWave; i += res)
         {
-            var enemie = Instantiate(typesOfEnemies[UnityEngine.Random.Range(0, Mathf.Min(typesOfEnemies.Count-1,(int)(currentWave/2)))]).GetComponent<Enemy>();
-            enemie.transform.position = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
-            enemiesSpawned.Add(enemie);            
+            res = Values[UnityEngine.Random.Range(0, Values.Count)];
+            if (i + res > currentWave)
+            {
+                res = Values.Find((int x) => x + i <= currentWave);
+
+
+            }
+
+            currents.Add(Instantiate(typesOfEnemies[Values.IndexOf(res)], spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)]).GetComponent<Enemy>());
+
         }
     }
-    private void Checker()
+
+    private IEnumerator CheckAlive()
     {
-        if (enemiesSpawned.Count(e=>e.isDead)>=amountToSpawn)
+        yield return new WaitForSeconds(3f);
+
+        currents.RemoveAll((Enemy x) => x.isDead);
+
+        if (currents.Count == 0)
         {
-            canSpawn = false;
             StartCoroutine(NextWave());
         }
+        StartCoroutine(CheckAlive());
     }
+
+
 }

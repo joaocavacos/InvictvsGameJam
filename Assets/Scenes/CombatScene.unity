@@ -1306,6 +1306,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 961247559}
+    - target: {fileID: 1792245245, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1235861475567279527, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
       propertyPath: fxAS
       value: 
@@ -1905,7 +1909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1816827528}
-  soundSource: {fileID: 804699347}
+  soundSource: {fileID: 0}
 --- !u!114 &703608906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1918,8 +1922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a384d5102eb7e6442ae2dfa9dc756f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSource: {fileID: 804699347}
-  pauseSound: {fileID: 8300000, guid: 9984309f45c30c1479d96418b5241a37, type: 3}
+  soundSource: {fileID: 0}
+  pauseSound: {fileID: 0}
 --- !u!1 &804699345
 GameObject:
   m_ObjectHideFlags: 0
@@ -4048,6 +4052,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2416651659605368189, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: Values.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416651659605368189, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: Values.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416651659605368189, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: Values.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416651659605368189, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: Values.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416651659605368189, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: Values.Array.data[3]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416651659605368189, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: typesOfEnemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 4224692728344441415, guid: dba8570090717ea489576f2015dd0b8e, type: 3}
+    - target: {fileID: 2416651659605368189, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: typesOfEnemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 4224692728344441415, guid: 331fb3106508d674d93d792867832a5a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
 --- !u!1 &1816827528
