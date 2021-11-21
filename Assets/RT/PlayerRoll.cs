@@ -22,9 +22,9 @@ public class PlayerRoll : PlayerComponent
     }
     private void Update()
     {
-        if (Player._controls.Character.Direction.ReadValue<Vector2>() != Vector2.zero )
+        if (Player._controls.Character.Movement.ReadValue<Vector2>() != Vector2.zero )
         {
-            dirRoll = Player._controls.Character.Direction.ReadValue<Vector2>().normalized;
+            dirRoll = Player._controls.Character.Movement.ReadValue<Vector2>().normalized;
         }
         if (Player.instance.state == States.ROLL)
         {
