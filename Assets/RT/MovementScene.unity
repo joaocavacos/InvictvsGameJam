@@ -287,30 +287,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1244310932, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.5330188
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.5330188
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792245245, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792245245, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7224786723615093932, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
       propertyPath: m_Name
       value: Player
