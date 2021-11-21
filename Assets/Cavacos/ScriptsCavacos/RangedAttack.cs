@@ -5,23 +5,43 @@ using UnityEngine;
 public class RangedAttack : MonoBehaviour
 {
     [SerializeField] Enemy enemy;
-
+    private float currentCooldown;
+    [SerializeField] float attackCooldown;
+    public GameObject arrowObj;
 
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position,Player.instance.transform.position)>=enemy.attackRange)
+        if (Vector2.Distance(transform.position,Player.instance.transform.position)>=enemy.chargeRange)
         {
             //Just walk
+            
         }
-        else if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.attackRange 
+        else if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange 
             && Vector2.Distance(transform.position, Player.instance.transform.position) > enemy.stopRange)
         {
             //Charge
+            enemy.animator.SetTrigger("ChangeToCharge");
         }
         else
         {
+            if (currentCooldown <= 0)
+            {
+                enemy.animator.SetTrigger("ChangeToAttack");
+                var arrow = Instantiate(arrowObj, transform.position, transform.rotation).GetComponent<Arrow>();
+                arrow.Setup((Player.instance.transform.position - transform.position).normalized, enemy);
+                currentCooldown = attackCooldown;
+            }
+            else
+            {
+
+            }
+            
             //Attack
+        }
+        if (currentCooldown>0)
+        {
+            currentCooldown -= Time.deltaTime;
         }
     }
     /*

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 323101623}
   - component: {fileID: 323101622}
   - component: {fileID: 323101621}
-  - component: {fileID: 4850143532579323469}
+  - component: {fileID: 492921430}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4850143532579323469
+--- !u!114 &492921430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 323101619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7df3a6945a1cbd47b50d295fc174d4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 812b14e38d249a747b2e256c391fb129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parrySlider: {fileID: 1991187197}
@@ -121,7 +121,7 @@ MonoBehaviour:
   green: {r: 0.19215687, g: 0.654902, b: 0.2784314, a: 1}
   blue: {r: 0.19215687, g: 0.6392157, b: 0.654902, a: 1}
   darkBlue: {r: 0.2784314, g: 0.19215687, b: 0.654902, a: 1}
-  purple: {r: 0.654902, g: 0.19215687, b: 0.56078434, a: 1}
+  purple: {r: 0.654902, g: 0.19215687, b: 0.56078434, a: 0}
 --- !u!1 &429074288
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df2810eb66504a947af2bbbe53c9e6fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 007217482eaff774387a925540e4e603, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd5d853f5241b9748995e17853ae55cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 671f971c739705149a3b2f9c81ef53c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b488de540d222384fbcee841023b4193, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e0480b190b63e345a721855293aa47e, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 17ceba5382e095443bf5fe828b5c8bfe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fee6e5b2c87a697498b095aad1e3ef44, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  _healthbar: {fileID: 6788090052266980068}
+  _healthbar: {fileID: 492921429}
 --- !u!58 &4946580013262652669
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2008,7 +2008,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2578734652595722544}
-  - component: {fileID: 6788090052266980068}
+  - component: {fileID: 492921429}
   m_Layer: 5
   m_Name: HPBar
   m_TagString: Untagged
@@ -2038,7 +2038,7 @@ RectTransform:
   m_AnchoredPosition: {x: -713, y: 459}
   m_SizeDelta: {x: 489.39, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6788090052266980068
+--- !u!114 &492921429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2047,7 +2047,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7510293327931510866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b632f8208925c4dba577c916f5cc7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f181984af4da5a4cb18b291e6ef9cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   barImage: {fileID: 773388950010396852}

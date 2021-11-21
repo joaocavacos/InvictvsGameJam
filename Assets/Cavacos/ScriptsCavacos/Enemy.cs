@@ -11,12 +11,13 @@ public class Enemy : MonoBehaviour
     public float damage;
     public float speed;
     public float stopRange;
-    public float attackRange;
+    public float chargeRange;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestinationSetter;
     public EnemyState state;
     public UnityEvent<EnemyState> OnChangeState = new UnityEvent<EnemyState>();
     public bool isDead;
+    public Animator animator;
     private void Awake()
     {
         _aiPath = GetComponent<AIPath>();
@@ -32,6 +33,11 @@ public class Enemy : MonoBehaviour
     {
         state = s;
         OnChangeState?.Invoke(s);
+    }
+    public void Kill()
+    {
+        isDead = true;
+        _aiPath.enabled = false;
     }
 
 }

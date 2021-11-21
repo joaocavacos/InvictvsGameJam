@@ -43,7 +43,6 @@ Packages/packages-lock.json
 ProjectSettings/ProjectSettings.asset
 Packages/manifest.json
 *.log
-*.meta
 *.log
 Logs/ApiUpdaterCheck.txt
 Logs/AssetImportWorker0-prev.log
