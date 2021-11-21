@@ -21,12 +21,13 @@ public class PlayerAttack : PlayerComponent
 
     private void Attack_performed(InputAction.CallbackContext obj)
     {
-        if (Player.instance.state == States.IDLE && Player.instance.parry.Meter> 0 && currentCooldown<=0)
+        if (Player.instance.state == States.IDLE && Player.instance.parry.Meter > 0 && currentCooldown <= 0)
         {
             //atacar
             currentCooldown = atkCooldown;
             Player.instance.ChangeState(States.ATK);
             Player.instance.animator.SetBool("Damage", true);
+            Player.instance.animator.SetFloat("AtkPower", (int)Player.instance.parry.Meter);
             Player.instance.playerRotation.RotateToDir();
             Atk(attackRange, Player.instance.parry.Meter);
             StartCoroutine(Cooldown(atkDuration));
@@ -40,14 +41,14 @@ public class PlayerAttack : PlayerComponent
         Debug.DrawRay(transform.position, Player._controls.Character.Direction.ReadValue<Vector2>().normalized * size, Color.red, 1f);
         if (result.collider != null)
         {
-            result.transform.gameObject.GetComponent<EnemyHealth>().TakeDamage(Damage);            
+            result.transform.gameObject.GetComponent<EnemyHealth>().TakeDamage(Damage);
         }
         Player.instance.parry.ResetMeter();
 
     }
     private void Update()
     {
-        if (currentCooldown>0)
+        if (currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;
         }
@@ -61,7 +62,7 @@ public class PlayerAttack : PlayerComponent
             Player.instance.ChangeState(States.IDLE);
             Player.instance.animator.SetBool("Damage", false);
         }
-        
+
     }
     private void OnDrawGizmos()
     {
@@ -70,6 +71,6 @@ public class PlayerAttack : PlayerComponent
     }
     public override void OnDie()
     {
-        
+
     }
 }
