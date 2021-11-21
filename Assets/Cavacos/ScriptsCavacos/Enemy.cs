@@ -25,9 +25,13 @@ public class Enemy : MonoBehaviour
     float angle;
     private void Update()
     {
-        dir = (Player.instance.transform.position - transform.position).normalized;
-        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
+        if (!isDead)
+        {
+            dir = (Player.instance.transform.position - transform.position).normalized;
+            angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
+        }
+        
     }
 
     private void Awake()
