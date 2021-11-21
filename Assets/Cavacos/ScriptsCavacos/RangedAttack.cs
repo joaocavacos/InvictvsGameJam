@@ -32,7 +32,7 @@ public class RangedAttack : EnemyAttack
         {
             if (currentCooldown <= 0 && charging)
             {
-                enemy.animator.SetTrigger("ChangeToAttack");
+                // enemy.animator.SetTrigger("ChangeToAttack");
                 soundSource.PlayOneShot(arrowSendSound);
                 var arrow = Instantiate(arrowObj, transform.position, transform.rotation).GetComponent<Arrow>();
                 arrow.Setup((Player.instance.transform.position - transform.position).normalized, enemy);
@@ -43,6 +43,8 @@ public class RangedAttack : EnemyAttack
 
             //Attack
         }
+        if (currentCooldown <= 0.8f && charging)
+            enemy.animator.SetTrigger("ChangeToAttack");
         if (currentCooldown > 0 && charging)
         {
             currentCooldown -= Time.deltaTime;

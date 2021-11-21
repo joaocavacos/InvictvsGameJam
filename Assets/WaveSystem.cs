@@ -94,7 +94,7 @@ public class WaveSystem : MonoBehaviour
             StartCoroutine(NextWave());
         }
         StartCoroutine(CheckAlive());
-        enemiesAlive.text=currents.Count().ToString();
+        enemiesAlive.text = currents.Count().ToString();
 
     }
 

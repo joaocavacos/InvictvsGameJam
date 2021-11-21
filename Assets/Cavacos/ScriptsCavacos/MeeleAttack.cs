@@ -44,10 +44,12 @@ public class MeeleAttack : EnemyAttack
         {
             currentAtkCooldown -= Time.deltaTime;
         }
+        if (currentCooldown <= 0.15f && charging)
+            enemy.animator.SetTrigger("ChangeToAttack");
 
         if (currentCooldown <= 0)
         {
-            enemy.animator.SetTrigger("ChangeToAttack");
+
 
             Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRadius, playerMask);
             //Debug.Log($"{gameObject.name} can attack {playerToDamage.Length} players");
