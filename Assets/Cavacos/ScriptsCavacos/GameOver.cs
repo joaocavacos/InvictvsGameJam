@@ -14,6 +14,8 @@ public class GameOver : MonoBehaviour
     {
         gameOver.SetActive(true);
         Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         EventSystem.current.SetSelectedGameObject(firstselected);
     }
 
