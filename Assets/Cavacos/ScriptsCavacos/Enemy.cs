@@ -18,9 +18,11 @@ public class Enemy : MonoBehaviour
     public UnityEvent<EnemyState> OnChangeState = new UnityEvent<EnemyState>();
     public bool isDead;
     public Animator animator;
+    public Rigidbody2D rb;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         _aiPath = GetComponent<AIPath>();
         _aiDestinationSetter = GetComponent<AIDestinationSetter>();
         _aiDestinationSetter.target = Player.instance.transform;

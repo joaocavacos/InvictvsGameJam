@@ -13,6 +13,7 @@ public class PlayerAttack : PlayerComponent
     public LayerMask collidingLayers = 9;
     public float attackRange;
     [SerializeField] Transform attackPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,7 @@ public class PlayerAttack : PlayerComponent
         if (result.collider != null)
         {
             result.transform.gameObject.GetComponent<EnemyHealth>().TakeDamage(Damage);
+            
         }
         Player.instance.parry.ResetMeter();
 
