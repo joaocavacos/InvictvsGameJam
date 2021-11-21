@@ -9,58 +9,55 @@ public class MeeleAttack : EnemyAttack
 
     [SerializeField] Enemy enemy;
     private float currentCooldown;
-    [SerializeField] float attackCooldown;
+    private float currentAtkCooldown;
+    [SerializeField] float AttackCooldown;
+    private float ChargeDuration = 0.5f;
     [SerializeField] float attackRadius;
     [SerializeField] LayerMask playerMask;
     [SerializeField] private Transform attackPos;
+    private bool charging = false;
 
-
+    private void Awake()
+    {
+        currentCooldown = ChargeDuration;
+        currentAtkCooldown = AttackCooldown;
+    }
     private void Update()
     {
-        if (Vector2.Distance(transform.position, Player.instance.transform.position) >= enemy.chargeRange)
-        {
-            //Just walk
-            enemy.animator.SetTrigger("ChangeToMove");
-
-        }
-        else if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange
-            && Vector2.Distance(transform.position, Player.instance.transform.position) > enemy.stopRange)
+        if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange && !charging && currentAtkCooldown < 0)
         {
             //Charge
             enemy.animator.SetTrigger("ChangeToCharge");
+            charging = true;
         }
-        else
-        {
-            if (currentCooldown <= 0)
-            {
-                enemy.animator.SetTrigger("ChangeToAttack");
 
-                Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRadius, playerMask);
-                //Debug.Log($"{gameObject.name} can attack {playerToDamage.Length} players");
-                for (int i = 0; i < playerToDamage.Length; i++)
-                {
-                    //Attack player
-                    playerToDamage[i].GetComponent<PlayerHealth>().TakeDamage(enemy.damage);
-                }
-
-
-                currentCooldown = attackCooldown;
-            }
-            else if(currentCooldown<0.5f)
-            {
-                enemy.animator.SetTrigger("ChangeToCharge");
-            }
-            else
-            {
-                enemy.animator.SetTrigger("ChangeToMove");
-            }
-
-            //Attack
-        }
-        if (currentCooldown > 0)
+        if (currentCooldown > 0 && charging)
         {
             currentCooldown -= Time.deltaTime;
         }
+        else if (currentAtkCooldown > 0)
+        {
+            currentAtkCooldown -= Time.deltaTime;
+        }
+
+        if (currentCooldown <= 0)
+        {
+            enemy.animator.SetTrigger("ChangeToAttack");
+
+            Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRadius, playerMask);
+            //Debug.Log($"{gameObject.name} can attack {playerToDamage.Length} players");
+            for (int i = 0; i < playerToDamage.Length; i++)
+            {
+                //Attack player
+                playerToDamage[i].GetComponent<PlayerHealth>().TakeDamage(enemy.damage);
+            }
+
+            charging = false;
+            currentCooldown = ChargeDuration;
+            currentAtkCooldown = AttackCooldown;
+        }
+
+
     }
     private void OnDrawGizmos()
     {

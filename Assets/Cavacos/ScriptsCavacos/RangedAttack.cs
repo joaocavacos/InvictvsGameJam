@@ -12,13 +12,8 @@ public class RangedAttack : EnemyAttack
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position,Player.instance.transform.position)>=enemy.chargeRange)
-        {
-            //Just walk
-            
-        }
-        else if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange 
-            && Vector2.Distance(transform.position, Player.instance.transform.position) > enemy.stopRange)
+
+        if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange)
         {
             //Charge
             enemy.animator.SetTrigger("ChangeToCharge");
@@ -36,10 +31,10 @@ public class RangedAttack : EnemyAttack
             {
 
             }
-            
+
             //Attack
         }
-        if (currentCooldown>0)
+        if (currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;
         }

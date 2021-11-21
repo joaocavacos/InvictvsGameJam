@@ -106,7 +106,7 @@ MonoBehaviour:
   damage: 0.2
   speed: 3
   stopRange: 2
-  chargeRange: 3
+  chargeRange: 2.5
   state: 0
   OnChangeState:
     m_PersistentCalls:
@@ -236,7 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4224692728344441416}
-  attackCooldown: 1
+  AttackCooldown: 3
+  ChargeDuration: 1.5
   attackRadius: 1
   playerMask:
     serializedVersion: 2
