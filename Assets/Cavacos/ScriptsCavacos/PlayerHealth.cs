@@ -27,9 +27,9 @@ namespace Cavacos.ScriptsCavacos
         {
             if (Player.instance.state == States.BLOCK )
             {
-                Debug.Log("Parried");
-                Player.instance.parry.ChargeMeter();
+                Debug.Log("Parried");                
                 parryPS.Play();
+                Player.instance.parry.ChargeMeter();
             }
             else if (Player.instance.state == States.ROLL)
             {

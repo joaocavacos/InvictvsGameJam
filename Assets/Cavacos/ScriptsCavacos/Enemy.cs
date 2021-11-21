@@ -20,6 +20,16 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rb;
 
+    [SerializeField] private float rotationSpeed=10f;
+    Vector2 dir;
+    float angle;
+    private void Update()
+    {
+        dir = (Player.instance.transform.position - transform.position).normalized;
+        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

@@ -16,7 +16,6 @@ public class Arrow : MonoBehaviour
     public float distance;
     public LayerMask isPlayer;
     private bool gaveDamage;
-
     private float currentTime;
 
     void Awake()
@@ -43,8 +42,13 @@ public class Arrow : MonoBehaviour
             {
                 if (hitInfo.collider.GetComponent<Player>() && hitInfo.collider != null)
                 {
-                    Player.instance.healthSystem.TakeDamage(enemy.damage);
-                    if (Player.instance.state != States.BLOCK || Player.instance.state != States.ROLL)
+                    
+                    Debug.Log($"Player State: {Player.instance.state}");
+                    if (Player.instance.state == States.BLOCK || Player.instance.state == States.ROLL)
+                    {
+                        DestroyArrow();                        
+                    }
+                    else if(Player.instance.state == States.IDLE || Player.instance.state == States.ATK)
                     {
                         transform.parent = Player.instance.body.transform;
                         rb.velocity = Vector2.zero;
@@ -53,7 +57,7 @@ public class Arrow : MonoBehaviour
                         gaveDamage = true;
                         currentTime = 0f;
                     }
-                   
+                    Player.instance.healthSystem.TakeDamage(enemy.damage);
                     //DestroyArrow();
                 }
             }

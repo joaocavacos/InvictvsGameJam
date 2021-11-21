@@ -114,6 +114,7 @@ MonoBehaviour:
   isDead: 0
   animator: {fileID: 5732546467390535783}
   rb: {fileID: 0}
+  rotationSpeed: 10
 --- !u!114 &4481895736240580167
 MonoBehaviour:
   m_ObjectHideFlags: 0
