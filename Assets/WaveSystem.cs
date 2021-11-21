@@ -37,7 +37,6 @@ public class WaveSystem : MonoBehaviour
             Checker();
             enemiesAlive.text = enemiesSpawned.Count(e => !e.isDead).ToString();
         }
-        
     }
 
     private IEnumerator ShowIntro()
