@@ -36,9 +36,13 @@ public class RangedAttack : EnemyAttack
                 soundSource.PlayOneShot(arrowSendSound);
                 var arrow = Instantiate(arrowObj, transform.position, transform.rotation).GetComponent<Arrow>();
                 arrow.Setup((Player.instance.transform.position - transform.position).normalized, enemy);
+
+                ChargeCooldown *= 0.96f;
+                AttackCooldown *= 0.96f;
                 currentCooldown = ChargeCooldown;
                 currentAtkCooldown = AttackCooldown;
                 charging = false;
+
             }
 
             //Attack
