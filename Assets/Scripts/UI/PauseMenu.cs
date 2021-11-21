@@ -12,14 +12,14 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenPause()
     {
-        if (!pauseMenu.activeSelf)
+        if (!pauseMenu.activeSelf && !Player.instance.isDead)
         {
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
             Cursor.visible = true;
             pauseMenu.SetActive(true);
         }
-        else
+        else if (pauseMenu.activeSelf && !Player.instance.isDead)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
