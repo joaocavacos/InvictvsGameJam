@@ -237,12 +237,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 4224692728344441416}
   AttackCooldown: 3
-  ChargeDuration: 1.5
   attackRadius: 1
   playerMask:
     serializedVersion: 2
     m_Bits: 64
   attackPos: {fileID: 7262681596930438411}
+  attackSound: {fileID: 8300000, guid: 70b1f9c34b6627c4b8096d662076b546, type: 3}
+  chargeSound: {fileID: 8300000, guid: 18079dd8a46a1724db514ace98403f88, type: 3}
 --- !u!95 &4627637595831850505
 Animator:
   serializedVersion: 3
@@ -277,6 +278,7 @@ MonoBehaviour:
   health: 2
   enemy: {fileID: 4224692728344441416}
   minimumDamage: 2
+  dieSound: {fileID: 8300000, guid: 5f6dad26465bc084c98db4c80b7e7955, type: 3}
 --- !u!1 &6242964881289033941
 GameObject:
   m_ObjectHideFlags: 0

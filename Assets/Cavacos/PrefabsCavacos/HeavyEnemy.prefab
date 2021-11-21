@@ -272,6 +272,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackPos: {fileID: 2273249591189326625}
+  attackSound: {fileID: 8300000, guid: 62cdbdb51b10db84093551c59524e8c5, type: 3}
+  chargeSound: {fileID: 8300000, guid: 31600daebe444584d8e28e8b18826435, type: 3}
 --- !u!95 &7964902230407878374
 Animator:
   serializedVersion: 3
@@ -306,3 +308,4 @@ MonoBehaviour:
   health: 4
   enemy: {fileID: 4224692728344441416}
   minimumDamage: 4
+  dieSound: {fileID: 8300000, guid: 777eb358381d5834e91b763d36b1af7a, type: 3}

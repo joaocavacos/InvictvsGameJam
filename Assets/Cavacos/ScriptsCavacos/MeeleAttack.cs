@@ -17,8 +17,12 @@ public class MeeleAttack : EnemyAttack
     [SerializeField] private Transform attackPos;
     private bool charging = false;
 
+    private AudioSource soundSource;
+    public AudioClip attackSound, chargeSound;
+
     private void Awake()
     {
+        soundSource = GameObject.Find("fx").GetComponent<AudioSource>();
         currentCooldown = ChargeDuration;
         currentAtkCooldown = AttackCooldown;
     }
@@ -28,6 +32,7 @@ public class MeeleAttack : EnemyAttack
         {
             //Charge
             enemy.animator.SetTrigger("ChangeToCharge");
+            soundSource.PlayOneShot(chargeSound);
             charging = true;
         }
 
@@ -50,6 +55,7 @@ public class MeeleAttack : EnemyAttack
             {
                 //Attack player
                 playerToDamage[i].GetComponent<PlayerHealth>().TakeDamage(enemy.damage);
+                soundSource.PlayOneShot(attackSound);
             }
 
             charging = false;

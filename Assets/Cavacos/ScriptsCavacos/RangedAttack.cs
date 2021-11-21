@@ -12,6 +12,9 @@ public class RangedAttack : EnemyAttack
     private float currentAtkCooldown;
     [SerializeField] float AttackCooldown;
 
+    public AudioSource soundSource;
+    public AudioClip arrowSendSound;
+
     private void Awake()
     {
         currentCooldown = ChargeCooldown;
@@ -31,6 +34,7 @@ public class RangedAttack : EnemyAttack
             if (currentCooldown <= 0 && charging)
             {
                 enemy.animator.SetTrigger("ChangeToAttack");
+                soundSource.PlayOneShot(arrowSendSound);
                 var arrow = Instantiate(arrowObj, transform.position, transform.rotation).GetComponent<Arrow>();
                 arrow.Setup((Player.instance.transform.position - transform.position).normalized, enemy);
                 currentCooldown = ChargeCooldown;

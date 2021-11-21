@@ -272,3 +272,5 @@ MonoBehaviour:
   health: 1
   enemy: {fileID: 4224692728344441416}
   minimumDamage: 1
+  soundSource: {fileID: 0}
+  dieSound: {fileID: 8300000, guid: c7f25759bd23bd442acad0ced98417e2, type: 3}
