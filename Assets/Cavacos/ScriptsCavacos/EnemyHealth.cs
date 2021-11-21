@@ -7,7 +7,7 @@ public class EnemyHealth : HealthSystem
 {
     [SerializeField] Enemy enemy;
     [SerializeField] private float minimumDamage;
-
+    
     private AudioSource soundSource;
     public AudioClip dieSound;
 
@@ -18,7 +18,11 @@ public class EnemyHealth : HealthSystem
 
     public override void Die()
     {
-        //base.Die();
+        enemy.rb.isKinematic = false;
+        enemy.rb.freezeRotation = true;
+        enemy.rb.gravityScale = 0;
+        enemy.rb.AddForce((enemy.rb.position-Player.instance.rb2D.position).normalized * 10f, ForceMode2D.Impulse);
+        
         soundSource.PlayOneShot(dieSound);
         enemy.Kill();
         
