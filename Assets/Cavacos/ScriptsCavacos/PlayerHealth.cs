@@ -10,6 +10,7 @@ namespace Cavacos.ScriptsCavacos
         public GameOver _gameOver;
         public AudioSource fxAS;
         public AudioClip takeDamageSound, dieSound;
+        public ParticleSystem bloodPS, parryPS;
 
         void Start()
         {
@@ -28,6 +29,7 @@ namespace Cavacos.ScriptsCavacos
             {
                 Debug.Log("Parried");
                 Player.instance.parry.ChargeMeter();
+                parryPS.Play();
             }
             else if (Player.instance.state == States.ROLL)
             {
@@ -35,7 +37,8 @@ namespace Cavacos.ScriptsCavacos
             }
             else
             {
-                Debug.Log("Reset Meter"); 
+                Debug.Log("Reset Meter");
+                bloodPS.Play();
                 base.TakeDamage(damage);
                 Player.instance.parry.ResetMeter();
                 fxAS.PlayOneShot(takeDamageSound);

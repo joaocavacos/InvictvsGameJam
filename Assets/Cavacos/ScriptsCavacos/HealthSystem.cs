@@ -11,7 +11,7 @@ public class HealthSystem : MonoBehaviour
     {
         health -= damage;
         //Debug.Log($"Health {health}");
-        if (health <= 0) Die(damage);
+        if (health <= 0.001f) Die(damage);
     }
 
     public virtual void Die(float damage)
