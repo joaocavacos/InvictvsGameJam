@@ -7,40 +7,45 @@ using UnityEngine.UI;
 
 public class HealthBarFade : MonoBehaviour
 {
-    private const float DAMAGED_HEALTH_FADE_TIMER_MAX = 1f; //fade time
+    public float maxFadeTimer = 1f; //fade time
     public Image barImage;
-    private Image damageBarImage;
-    private Color damageColor;
-    private float fadeTime;
+    public Image damageBarImage;
+    public Color damageColor;
+    public float fadeTimer;
+    public PlayerHealth hp;
 
     void Awake()
     {
         barImage = transform.Find("Bar").GetComponent<Image>();
         damageBarImage = transform.Find("DamageBar").GetComponent<Image>();
+
         damageColor = damageBarImage.color;
         damageColor.a = 0f;
         damageBarImage.color = damageColor;
     }
 
+    private void Start()
+    {
+        SetHealth(hp.health);
+    }
+
     private void Update()
     {
-        if (damageColor.a > 0)
+        if (damageColor.a > 0f)
         {
-            fadeTime -= Time.deltaTime;
-            if (fadeTime < 0)
+            fadeTimer -= Time.deltaTime;
+            if (fadeTimer < 0)
             {
-                float fadeAmount = 2.5f;
-                damageColor.a = fadeAmount * Time.deltaTime;
+                damageColor.a -= 5f * Time.deltaTime;
                 damageBarImage.color = damageColor;
             }
         }
-        else
-        {
-            damageBarImage.fillAmount = barImage.fillAmount;
-            damageColor.a = 1;
-            damageBarImage.color = damageColor;
-            fadeTime = DAMAGED_HEALTH_FADE_TIMER_MAX;
-        }
     }
+
+    public void SetHealth(float hp)
+    {
+        barImage.fillAmount = hp;
+    }
+    
 
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedAttack : MonoBehaviour
+public class RangedAttack : EnemyAttack
 {
     [SerializeField] Enemy enemy;
     private float currentCooldown;
@@ -12,13 +12,8 @@ public class RangedAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position,Player.instance.transform.position)>=enemy.chargeRange)
-        {
-            //Just walk
-            
-        }
-        else if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange 
-            && Vector2.Distance(transform.position, Player.instance.transform.position) > enemy.stopRange)
+
+        if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange)
         {
             //Charge
             enemy.animator.SetTrigger("ChangeToCharge");
@@ -36,10 +31,10 @@ public class RangedAttack : MonoBehaviour
             {
 
             }
-            
+
             //Attack
         }
-        if (currentCooldown>0)
+        if (currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;
         }

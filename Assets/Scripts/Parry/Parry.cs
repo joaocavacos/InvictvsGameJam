@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Parry : PlayerComponent
 {
     /// <summary>
-    /// O meter só vai de 0 a 100
+    /// O meter só vai de 0 a 4
     /// </summary>
     [SerializeField]private float _meter;
     public float BlockDuration = 0.25f;
@@ -21,7 +21,7 @@ public class Parry : PlayerComponent
         set
         {
             if (value > 0f)
-                _meter = Mathf.Min(100, value);
+                _meter = Mathf.Min(4, value);
             else
                 _meter = 0;
         }
@@ -36,28 +36,25 @@ public class Parry : PlayerComponent
         {
             //acao de bloquear
             Player.instance.ChangeState(States.BLOCK);
+            Player.instance.playerRotation.RotateToDir();
             Player.instance.animator.SetBool("Block",true);
             blockCoroutine = StartCoroutine(Cooldown(BlockDuration));
         }
     }
 
-    public void ChargeMeter(float charge)
+    public void ChargeMeter()
     {
-        Meter += charge;
+        Meter += 1;
         slider.value = Meter;
         if (blockCoroutine!=null)
         {
             StopCoroutine(blockCoroutine);
+            Player.instance.animator.SetBool("Block", false);
             Player.instance.ChangeState(States.IDLE);
         }
         
     }
 
-    public void DepleteMeter(float charge)
-    {
-        Meter -= charge;
-        slider.value = Meter;
-    }
 
     public void ResetMeter()
     {
