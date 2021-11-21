@@ -1306,6 +1306,30 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 961247559}
+    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: lengthInSec
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.83921576
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.75294125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504111869, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.12941177
+      objectReference: {fileID: 0}
     - target: {fileID: 1792245245, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

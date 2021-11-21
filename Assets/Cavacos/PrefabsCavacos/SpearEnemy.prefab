@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4224692728344441416}
-  AttackCooldown: 3
-  attackRadius: 1.5
+  AttackCooldown: 2
+  attackRadius: 4
   playerMask:
     serializedVersion: 2
     m_Bits: 64

@@ -9,6 +9,10 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject creditsMenu;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
     public void OpenCredits() //main
     {
         mainMenu.SetActive(false);
