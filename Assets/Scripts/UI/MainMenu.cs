@@ -33,4 +33,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Application has quit");
     }
 
+    public void PlaySound(AudioSource audio)
+    {
+        audio.Play();
+    }
+
 }
