@@ -14997,7 +14997,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 4
   m_WholeNumbers: 0
-  m_Value: 4
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15221,7 +15221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 59.99999}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 450, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8909656874017941209
@@ -16667,7 +16667,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f181984af4da5a4cb18b291e6ef9cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxFadeTimer: 1
   barImage: {fileID: 773388950010396852}
+  damageBarImage: {fileID: 0}
+  damageColor: {r: 0, g: 0, b: 0, a: 0}
+  fadeTimer: 0
   hp: {fileID: 1235861475567279527}
 --- !u!1 &8943603135612364819
 GameObject:
