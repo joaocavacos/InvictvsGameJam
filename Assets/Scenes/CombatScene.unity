@@ -1338,6 +1338,14 @@ PrefabInstance:
       propertyPath: _gameOver
       value: 
       objectReference: {fileID: 910380301}
+    - target: {fileID: 1235861475567279527, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: takeDamageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e53fe5be9405a254fa3cf198188b7dda, type: 3}
+    - target: {fileID: 6660662509057170567, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: blockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8355338b8dcc6f842abf24044c12d735, type: 3}
     - target: {fileID: 7224786723615093932, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
       propertyPath: m_Name
       value: Player
