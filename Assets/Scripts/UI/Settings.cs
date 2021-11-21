@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Settings : MonoBehaviour
 {
@@ -121,6 +122,7 @@ public class Settings : MonoBehaviour
 
     public void OpenControls()
     {
+        EventSystem.current.SetSelectedGameObject(transform.Find("ConfirmButton").gameObject);
         controlsMenu.SetActive(true);
         graphicsMenu.SetActive(false);
         generalMenu.SetActive(false);
@@ -142,6 +144,7 @@ public class Settings : MonoBehaviour
 
     public void Open()
     {
+       
         settingsMenu.SetActive(true);
     }
 

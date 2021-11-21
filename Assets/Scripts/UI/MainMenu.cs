@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
     
     public GameObject mainMenu;
     public GameObject creditsMenu;
+    [SerializeField] private GameObject defaultGameobject;
 
     private void Start()
     {
         Time.timeScale = 1f;
+        EventSystem.current.SetSelectedGameObject(defaultGameobject);
+    }
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject ==null)
+        {
+            EventSystem.current.SetSelectedGameObject(defaultGameobject);
+        }
     }
     public void OpenCredits() //main
     {
