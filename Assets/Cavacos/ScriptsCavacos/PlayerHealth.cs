@@ -29,6 +29,7 @@ namespace Cavacos.ScriptsCavacos
             {
                 Debug.Log("Parried");
                 Player.instance.parry.ChargeMeter();
+                parryPS.Play();
             }
             else if (Player.instance.state == States.ROLL)
             {

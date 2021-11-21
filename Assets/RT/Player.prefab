@@ -1058,7 +1058,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -6057,7 +6057,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -17554,6 +17554,8 @@ MonoBehaviour:
   fxAS: {fileID: 5998776024158557548}
   takeDamageSound: {fileID: 8300000, guid: 283869a7693170c47be0d20a8283fc86, type: 3}
   dieSound: {fileID: 8300000, guid: d4bf7cc828f6d1c4e8d171f122c2c870, type: 3}
+  bloodPS: {fileID: 1244310932}
+  parryPS: {fileID: 1504111869}
 --- !u!58 &4946580013262652669
 CircleCollider2D:
   m_ObjectHideFlags: 0
