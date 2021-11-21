@@ -16364,6 +16364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceRoll: 5
   timeToRoll: 0.5
+  soundSource: {fileID: 0}
+  rollSound: {fileID: 8300000, guid: 0fffa47624c50084e8c63e171a18b7f8, type: 3}
   wallLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -16382,6 +16384,10 @@ MonoBehaviour:
   health: 1
   _healthbar: {fileID: 492921429}
   _gameOver: {fileID: 0}
+  fxAS: {fileID: 0}
+  blockSound: {fileID: 8300000, guid: 8355338b8dcc6f842abf24044c12d735, type: 3}
+  takeDamageSound: {fileID: 8300000, guid: 283869a7693170c47be0d20a8283fc86, type: 3}
+  dieSound: {fileID: 8300000, guid: d4bf7cc828f6d1c4e8d171f122c2c870, type: 3}
 --- !u!58 &4946580013262652669
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16432,6 +16438,8 @@ MonoBehaviour:
   _meter: 0
   BlockDuration: 0.25
   slider: {fileID: 1991187197}
+  soundSource: {fileID: 0}
+  blockSound: {fileID: 8300000, guid: 8355338b8dcc6f842abf24044c12d735, type: 3}
 --- !u!114 &7101565478446601718
 MonoBehaviour:
   m_ObjectHideFlags: 0

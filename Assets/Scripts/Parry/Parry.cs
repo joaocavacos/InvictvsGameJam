@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,6 +13,10 @@ public class Parry : PlayerComponent
     public float BlockDuration = 0.25f;
     Coroutine blockCoroutine;
     public Slider slider;
+
+    public AudioSource soundSource;
+    public AudioClip blockSound;
+    
     public float Meter
     {
         get
@@ -35,6 +40,7 @@ public class Parry : PlayerComponent
         if (Player.instance.state == States.IDLE)
         {
             //acao de bloquear
+            soundSource.PlayOneShot(blockSound);
             Player.instance.ChangeState(States.BLOCK);
             Player.instance.playerRotation.RotateToDir();
             Player.instance.animator.SetBool("Block",true);

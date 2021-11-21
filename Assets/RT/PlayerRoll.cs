@@ -14,6 +14,9 @@ public class PlayerRoll : PlayerComponent
     Vector2 finalPos;
     Vector2 dirRoll;
 
+    public AudioSource soundSource;
+    public AudioClip rollSound;
+
     [SerializeField] LayerMask wallLayer;
     private void Start()
     {
@@ -30,7 +33,6 @@ public class PlayerRoll : PlayerComponent
         {
             //Debug.Log("RollingUpdate");
             currentLerp += Time.deltaTime/timeToRoll;
-            
 
             Player.instance.rb2D.position = Vector2.Lerp(startPos, finalPos, currentLerp);
             if (currentLerp>= 1)
@@ -46,6 +48,7 @@ public class PlayerRoll : PlayerComponent
         if (canRoll && Player.instance.state != States.ROLL)
         {
             //Debug.Log("Rolling");
+            soundSource.PlayOneShot(rollSound);
             Player.instance.ChangeState(States.ROLL);
             Player.instance.animator.SetBool("Roll", true);
             currentLerp = 0;
