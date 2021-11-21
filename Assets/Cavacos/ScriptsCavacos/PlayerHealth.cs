@@ -52,7 +52,7 @@ namespace Cavacos.ScriptsCavacos
             
         }
 
-        public override void Die()
+        public override void Die(float damage)
         {
             Debug.Log("Died");
             Player.instance.KillPlayer();

@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 8099215153862798244}
   - component: {fileID: 7964902230407878374}
   - component: {fileID: 1666124457949599249}
+  - component: {fileID: 1672760996703756295}
   m_Layer: 9
   m_Name: HeavyEnemy
   m_TagString: Untagged
@@ -309,3 +310,24 @@ MonoBehaviour:
   enemy: {fileID: 4224692728344441416}
   minimumDamage: 4
   dieSound: {fileID: 8300000, guid: 777eb358381d5834e91b763d36b1af7a, type: 3}
+--- !u!50 &1672760996703756295
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224692728344441415}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

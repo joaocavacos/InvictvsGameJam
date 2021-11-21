@@ -22,7 +22,6 @@ public class RangedAttack : EnemyAttack
     }
     private void Update()
     {
-        Debug.Log(currentAtkCooldown);
         if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange && currentAtkCooldown <= 0 && !charging)
         {
             //Charge
