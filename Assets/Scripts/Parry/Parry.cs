@@ -15,7 +15,7 @@ public class Parry : PlayerComponent
     public Slider slider;
 
     public AudioSource soundSource;
-    public AudioClip blockSound;
+    public AudioClip blockSound, parrySound;
     
     public float Meter
     {
@@ -50,6 +50,7 @@ public class Parry : PlayerComponent
 
     public void ChargeMeter()
     {
+        soundSource.PlayOneShot(parrySound, 1);
         Meter += 1;
         slider.value = Meter;
         if (blockCoroutine!=null)
