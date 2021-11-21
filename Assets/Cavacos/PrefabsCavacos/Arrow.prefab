@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abce814afd097754e8db3ead8b990905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowSpeed: 5
+  arrowSpeed: 10
   disappearTime: 5
   distance: 0.5
   isPlayer:

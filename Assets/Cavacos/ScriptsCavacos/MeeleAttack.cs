@@ -60,6 +60,8 @@ public class MeeleAttack : EnemyAttack
             }
 
             charging = false;
+            ChargeDuration *= 0.96f;
+            AttackCooldown *= 0.96f;
             currentCooldown = ChargeDuration;
             currentAtkCooldown = AttackCooldown;
         }
