@@ -17,11 +17,12 @@ public class WaveSystem : MonoBehaviour
 
     [Header("Screens")]
     [SerializeField] private TextMeshProUGUI enemiesAlive;
+    [SerializeField] private int bodylimit = 3;
     public GameObject introScreen;
     public GameObject nextWaveScreen;
     bool waiting;
     public List<Enemy> currents = new List<Enemy>();
-    public List<Enemy> dead = new List<Enemy>();
+    private List<Enemy> dead = new List<Enemy>();
 
     private void Start()
     {
@@ -97,14 +98,14 @@ public class WaveSystem : MonoBehaviour
         if (currents.Count == 0)
         {
             StartCoroutine(NextWave());
-            if (dead.Count > 10)
+            if (dead.Count > bodylimit)
             {
                 for (int i = 0; i < dead.Count; i++)
                 {
                     GameObject rip = dead[0].gameObject;
                     dead.RemoveAt(0);
                     Destroy(rip);
-                    if (dead.Count <= 10)
+                    if (dead.Count <= bodylimit)
                     {
                         break;
                     }
