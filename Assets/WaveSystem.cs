@@ -67,19 +67,22 @@ public class WaveSystem : MonoBehaviour
 
     private void MakeWave()
     {
-        int res = Values[UnityEngine.Random.Range(0, Values.Count)];
-        for (int i = 0; i < currentWave; i += res)
+        if (currents.Count == 0)
         {
-            res = Values[UnityEngine.Random.Range(0, Values.Count)];
-            if (i + res > currentWave)
+            int res;
+            for (int i = 0; i < currentWave; i += res)
             {
-                res = Values.Find((int x) => x + i <= currentWave);
+                res = Values[UnityEngine.Random.Range(0, Values.Count)];
+                if (i + res > currentWave)
+                {
+                    res = Values.Find((int x) => x + i <= currentWave);
 
 
+                }
+
+                currents.Add(Instantiate(typesOfEnemies[Values.IndexOf(res)], spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)]).GetComponent<Enemy>());
+                Debug.Log("Making wave and Adding " + i);
             }
-
-            currents.Add(Instantiate(typesOfEnemies[Values.IndexOf(res)], spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)]).GetComponent<Enemy>());
-
         }
     }
 
