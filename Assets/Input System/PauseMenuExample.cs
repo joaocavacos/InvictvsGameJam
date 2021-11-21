@@ -9,6 +9,9 @@ public class PauseMenuExample : MonoBehaviour
     public static CharacterControls pauseControls;
     private PauseMenu _pauseMenu;
 
+    public AudioSource soundSource;
+    public AudioClip pauseSound;
+
     void Awake()
     {
         _pauseMenu = GetComponent<PauseMenu>();
@@ -24,6 +27,7 @@ public class PauseMenuExample : MonoBehaviour
     {
         //o evento, faz o q quiseres
         Debug.Log("Pause menu open");
+        soundSource.PlayOneShot(pauseSound);
         _pauseMenu.OpenPause();
     }
 
