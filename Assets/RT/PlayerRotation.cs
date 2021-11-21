@@ -7,6 +7,11 @@ public class PlayerRotation : PlayerComponent
     Vector3 mousePos;
     Vector3 directionRotation;
     public float rotationSpeed;
+    private void Start()
+    {
+
+        Cursor.visible = false;
+    }
     private void Update()
     {
         if (Player._controls.Character.Movement.ReadValue<Vector2>()!=Vector2.zero && Player.instance.state != States.ROLL)
@@ -15,7 +20,6 @@ public class PlayerRotation : PlayerComponent
             Player.instance.body.rotation = Quaternion.Lerp(Player.instance.body.rotation, Quaternion.AngleAxis(angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
         }
         
-        Cursor.visible = false;
 
     }
     private void OnDrawGizmos()

@@ -364,7 +364,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""48e29e29-d54c-44a3-acf1-56a90694dd15"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",

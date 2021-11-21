@@ -8,14 +8,25 @@ public class PauseMenu : MonoBehaviour
 {
        
     public GameObject pauseMenu;
-
     public AudioSource soundSource;
 
     public void OpenPause()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        if (!pauseMenu.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            pauseMenu.SetActive(true);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            pauseMenu.SetActive(false);
+        }
+        
     }
 
     public void ResumeGame()

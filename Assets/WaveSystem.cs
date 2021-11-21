@@ -36,7 +36,7 @@ public class WaveSystem : MonoBehaviour
         enemiesAlive.gameObject.SetActive(false);
         nextWaveScreen.SetActive(false);
         introScreen.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         introScreen.SetActive(false);
         //Hide intro
 
@@ -57,7 +57,7 @@ public class WaveSystem : MonoBehaviour
         enemiesAlive.gameObject.SetActive(false);
         nextWaveScreen.SetActive(true);
         nextWaveScreen.transform.Find("text").GetComponent<TextMeshProUGUI>().text = $"WAVE {currentWave}";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(3f);
         enemiesAlive.gameObject.SetActive(true);
         nextWaveScreen.SetActive(false);
         MakeWave();
