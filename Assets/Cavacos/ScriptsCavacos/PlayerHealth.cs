@@ -6,17 +6,16 @@ namespace Cavacos.ScriptsCavacos
 {
     public class PlayerHealth: HealthSystem
     {
-        public Slider hpSlider;
+        public HealthBarFade _healthbar;
 
         void Start()
         {
-            hpSlider.value = hpSlider.maxValue;
-            health = hpSlider.value;
+            health = _healthbar.barImage.fillAmount;
         }
 
         void Update()
         {
-            hpSlider.value = health;
+            _healthbar.barImage.fillAmount = health;
         }
 
         public override void TakeDamage(float damage)
