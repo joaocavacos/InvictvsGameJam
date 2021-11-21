@@ -1314,10 +1314,6 @@ PrefabInstance:
       propertyPath: _gameOver
       value: 
       objectReference: {fileID: 910380301}
-    - target: {fileID: 7101565478446601718, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: attackRange
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 7224786723615093932, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1366,12 +1362,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7224786724977192152, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+--- !u!82 &492921424 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5998776024158557548, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+  m_PrefabInstance: {fileID: 492921423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619475634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,7 +1902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1816827528}
-  soundSource: {fileID: 0}
+  soundSource: {fileID: 492921424}
 --- !u!114 &703608906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1918,8 +1915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a384d5102eb7e6442ae2dfa9dc756f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSource: {fileID: 0}
-  pauseSound: {fileID: 0}
+  soundSource: {fileID: 492921424}
+  pauseSound: {fileID: 8300000, guid: 9984309f45c30c1479d96418b5241a37, type: 3}
 --- !u!1 &842113785
 GameObject:
   m_ObjectHideFlags: 0
