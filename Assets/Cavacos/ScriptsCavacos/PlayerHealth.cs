@@ -37,6 +37,14 @@ namespace Cavacos.ScriptsCavacos
                 base.TakeDamage(damage);
                 Player.instance.parry.ResetMeter();
                 
+                if (_healthbar.damageColor.a <= 0)
+                {
+                    _healthbar.damageBarImage.fillAmount = _healthbar.barImage.fillAmount;
+                }
+                _healthbar.damageColor.a = 1f;
+                _healthbar.damageBarImage.color = _healthbar.damageColor;
+                _healthbar.fadeTimer = _healthbar.maxFadeTimer;
+                _healthbar.SetHealth(health);
             }
             
         }
