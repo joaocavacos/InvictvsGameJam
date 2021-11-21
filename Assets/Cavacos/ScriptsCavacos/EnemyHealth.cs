@@ -22,7 +22,7 @@ public class EnemyHealth : HealthSystem
         enemy.rb.freezeRotation = true;
         enemy.rb.drag = 5f;
         enemy.rb.gravityScale = 0;
-        enemy.rb.AddForce((enemy.rb.position-Player.instance.rb2D.position).normalized * ((damage-(minimumDamage+1))*10f), ForceMode2D.Impulse);
+        enemy.rb.AddForce((enemy.rb.position-Player.instance.rb2D.position).normalized * ((damage+1-minimumDamage)*2)*10f, ForceMode2D.Impulse);
         
         soundSource.PlayOneShot(dieSound);
         enemy.Kill();

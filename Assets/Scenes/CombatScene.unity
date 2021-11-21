@@ -4004,6 +4004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2416651658557346044, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2416651659605368178, guid: 3fb1317877dfb2e469a603a948ab0b35, type: 3}
       propertyPath: m_Name
       value: WaveSystem
