@@ -7,10 +7,12 @@ namespace Cavacos.ScriptsCavacos
     public class PlayerHealth: HealthSystem
     {
         public HealthBarFade _healthbar;
+        public GameOver _gameOver;
 
         void Start()
         {
             health = _healthbar.barImage.fillAmount;
+            Time.timeScale = 1;
         }
 
         void Update()
@@ -44,6 +46,8 @@ namespace Cavacos.ScriptsCavacos
             Player.instance.KillPlayer();
             Player.instance.animator.SetBool("Dead", true);
             Player.instance.ChangeState(States.DEAD);
+            _gameOver.GameOverActivate();
+            Time.timeScale = 0;
             //base.Die();
             //Dead animation
         }
