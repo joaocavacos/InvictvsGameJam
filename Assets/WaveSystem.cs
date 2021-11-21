@@ -21,6 +21,7 @@ public class WaveSystem : MonoBehaviour
     public GameObject nextWaveScreen;
     bool waiting;
     public List<Enemy> currents = new List<Enemy>();
+    public List<Enemy> dead = new List<Enemy>();
 
     private void Start()
     {
@@ -89,12 +90,26 @@ public class WaveSystem : MonoBehaviour
     private IEnumerator CheckAlive()
     {
         yield return new WaitForSeconds(3f);
-
+        dead.AddRange(currents.Where((Enemy x) => x.isDead));
         currents.RemoveAll((Enemy x) => x.isDead);
+
 
         if (currents.Count == 0)
         {
             StartCoroutine(NextWave());
+            if (dead.Count > 10)
+            {
+                for (int i = 0; i < dead.Count; i++)
+                {
+                    GameObject rip = dead[0].gameObject;
+                    dead.RemoveAt(0);
+                    Destroy(rip);
+                    if (dead.Count <= 10)
+                    {
+                        break;
+                    }
+                }
+            }
         }
         StartCoroutine(CheckAlive());
         enemiesAlive.text = currents.Count().ToString();
