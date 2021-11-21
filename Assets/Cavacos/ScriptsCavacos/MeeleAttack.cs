@@ -24,7 +24,7 @@ public class MeeleAttack : EnemyAttack
     }
     private void Update()
     {
-        if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange && !charging && currentAtkCooldown < 0)
+        if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange && !charging && currentAtkCooldown <= 0)
         {
             //Charge
             enemy.animator.SetTrigger("ChangeToCharge");

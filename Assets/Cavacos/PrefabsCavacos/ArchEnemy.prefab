@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0.2
   speed: 4
-  stopRange: 6
+  stopRange: 7
   chargeRange: 8
   state: 0
   OnChangeState:
@@ -235,8 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4224692728344441416}
-  attackCooldown: 2
+  ChargeCooldown: 0.65
   arrowObj: {fileID: 6737749750468733530, guid: baa442e7b66221f44a97f5d87ca3e772, type: 3}
+  AttackCooldown: 2
 --- !u!95 &5732546467390535783
 Animator:
   serializedVersion: 3

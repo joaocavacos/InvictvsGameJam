@@ -6,37 +6,47 @@ public class RangedAttack : EnemyAttack
 {
     [SerializeField] Enemy enemy;
     private float currentCooldown;
-    [SerializeField] float attackCooldown;
+    [SerializeField] float ChargeCooldown;
     public GameObject arrowObj;
+    private bool charging = false;
+    private float currentAtkCooldown;
+    [SerializeField] float AttackCooldown;
 
-
+    private void Awake()
+    {
+        currentCooldown = ChargeCooldown;
+        currentAtkCooldown = AttackCooldown;
+    }
     private void Update()
     {
-
-        if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange)
+        Debug.Log(currentAtkCooldown);
+        if (Vector2.Distance(transform.position, Player.instance.transform.position) < enemy.chargeRange && currentAtkCooldown <= 0 && !charging)
         {
             //Charge
             enemy.animator.SetTrigger("ChangeToCharge");
+            charging = true;
         }
         else
         {
-            if (currentCooldown <= 0)
+            if (currentCooldown <= 0 && charging)
             {
                 enemy.animator.SetTrigger("ChangeToAttack");
                 var arrow = Instantiate(arrowObj, transform.position, transform.rotation).GetComponent<Arrow>();
                 arrow.Setup((Player.instance.transform.position - transform.position).normalized, enemy);
-                currentCooldown = attackCooldown;
-            }
-            else
-            {
-
+                currentCooldown = ChargeCooldown;
+                currentAtkCooldown = AttackCooldown;
+                charging = false;
             }
 
             //Attack
         }
-        if (currentCooldown > 0)
+        if (currentCooldown > 0 && charging)
         {
             currentCooldown -= Time.deltaTime;
+        }
+        else if (currentAtkCooldown > 0)
+        {
+            currentAtkCooldown -= Time.deltaTime;
         }
     }
     /*
