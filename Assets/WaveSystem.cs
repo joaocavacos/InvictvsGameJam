@@ -68,7 +68,7 @@ public class WaveSystem : MonoBehaviour
     private void MakeWave()
     {
         int res = Values[UnityEngine.Random.Range(0, Values.Count)];
-        for (int i = 0; i <= currentWave; i += res)
+        for (int i = 0; i < currentWave; i += res)
         {
             res = Values[UnityEngine.Random.Range(0, Values.Count)];
             if (i + res > currentWave)
