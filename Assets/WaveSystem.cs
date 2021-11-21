@@ -48,6 +48,7 @@ public class WaveSystem : MonoBehaviour
     }
     private IEnumerator NextWave()
     {
+        Player.instance.healthSystem.health = Mathf.Min(1, Player.instance.healthSystem.health + ((1 - Player.instance.healthSystem.health) * 0.2f));
         waiting = true;
         currentWave += 1;
         if (currentWave % 5 == 0)
