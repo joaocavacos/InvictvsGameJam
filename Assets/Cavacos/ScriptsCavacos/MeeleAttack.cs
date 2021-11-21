@@ -44,8 +44,7 @@ public class MeeleAttack : EnemyAttack
         {
             currentAtkCooldown -= Time.deltaTime;
         }
-        if (currentCooldown <= 0.15f && charging)
-            enemy.animator.SetTrigger("ChangeToAttack");
+
 
         if (currentCooldown <= 0)
         {
@@ -64,7 +63,8 @@ public class MeeleAttack : EnemyAttack
             currentCooldown = ChargeDuration;
             currentAtkCooldown = AttackCooldown;
         }
-
+        if (currentCooldown <= 0.25f && charging)
+            enemy.animator.SetTrigger("ChangeToAttack");
 
     }
     private void OnDrawGizmos()
