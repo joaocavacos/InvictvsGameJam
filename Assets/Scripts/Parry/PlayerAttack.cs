@@ -18,6 +18,7 @@ public class PlayerAttack : PlayerComponent
     void Start()
     {
         Player._controls.Character.Attack.performed += Attack_performed;
+        attackPos.position = Vector2.up * (attackRange);
     }
 
     private void Attack_performed(InputAction.CallbackContext obj)

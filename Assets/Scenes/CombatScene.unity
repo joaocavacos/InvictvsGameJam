@@ -399,11 +399,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.9490196, b: 0.2509804, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.96470594, b: 0.13725491, a: 1}
+    m_PressedColor: {r: 1, g: 0.7960785, b: 0, a: 1}
+    m_SelectedColor: {r: 0.47058827, g: 0.3647059, b: 0.011764707, a: 1}
+    m_DisabledColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1314,6 +1314,10 @@ PrefabInstance:
       propertyPath: _gameOver
       value: 
       objectReference: {fileID: 910380301}
+    - target: {fileID: 7101565478446601718, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: attackRange
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7224786723615093932, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1361,6 +1365,10 @@ PrefabInstance:
     - target: {fileID: 7224786723615093934, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224786724977192152, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ba0e8a25f890648bd089334ece5073, type: 3}
@@ -2185,6 +2193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: {fileID: 1947267172}
+  firstselected: {fileID: 142436842}
 --- !u!1 &933483702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,11 +2879,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.9461138, b: 0.25, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.96470594, b: 0.13725491, a: 1}
+    m_PressedColor: {r: 1, g: 0.7960785, b: 0, a: 1}
+    m_SelectedColor: {r: 0.47058827, g: 0.3647059, b: 0.011764707, a: 1}
+    m_DisabledColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
