@@ -36,28 +36,25 @@ public class Parry : PlayerComponent
         {
             //acao de bloquear
             Player.instance.ChangeState(States.BLOCK);
+            Player.instance.playerRotation.RotateToDir();
             Player.instance.animator.SetBool("Block",true);
             blockCoroutine = StartCoroutine(Cooldown(BlockDuration));
         }
     }
 
-    public void ChargeMeter(float charge)
+    public void ChargeMeter()
     {
-        Meter += charge;
+        Meter += 1;
         slider.value = Meter;
         if (blockCoroutine!=null)
         {
             StopCoroutine(blockCoroutine);
+            Player.instance.animator.SetBool("Block", false);
             Player.instance.ChangeState(States.IDLE);
         }
         
     }
 
-    public void DepleteMeter(float charge)
-    {
-        Meter -= charge;
-        slider.value = Meter;
-    }
 
     public void ResetMeter()
     {

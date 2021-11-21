@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public UnityEvent<EnemyState> OnChangeState = new UnityEvent<EnemyState>();
     public bool isDead;
     public Animator animator;
+
     private void Awake()
     {
         _aiPath = GetComponent<AIPath>();
@@ -38,6 +39,9 @@ public class Enemy : MonoBehaviour
     {
         isDead = true;
         _aiPath.enabled = false;
+        GetComponent<EnemyAttack>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        animator.SetTrigger("ChangeToDead");
     }
 
 }

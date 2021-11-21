@@ -18,16 +18,16 @@ public class ParryUpdater : MonoBehaviour
 
     void Update()
     {
-        if (parrySlider.value <= 25)
+        if (parrySlider.value == 1)
         {
             fillSlider.color = green;
-        }else if (parrySlider.value > 25 && parrySlider.value <= 50)
+        }else if (parrySlider.value ==2)
         {
             fillSlider.color = blue;
-        }else if (parrySlider.value > 50 && parrySlider.value <= 75)
+        }else if (parrySlider.value ==3)
         {
             fillSlider.color = darkBlue;
-        }else if (parrySlider.value > 75)
+        }else if (parrySlider.value == 4)
         {
             fillSlider.color = purple;
         }

@@ -25,7 +25,7 @@ namespace Cavacos.ScriptsCavacos
             if (Player.instance.state == States.BLOCK )
             {
                 Debug.Log("Parried");
-                Player.instance.parry.ChargeMeter(damage);
+                Player.instance.parry.ChargeMeter();
             }
             else if (Player.instance.state == States.ROLL)
             {
@@ -33,9 +33,10 @@ namespace Cavacos.ScriptsCavacos
             }
             else
             {
-                Debug.Log("Reset Meter");
-                Player.instance.parry.ResetMeter();
+                Debug.Log("Reset Meter"); 
                 base.TakeDamage(damage);
+                Player.instance.parry.ResetMeter();
+                
             }
             
         }

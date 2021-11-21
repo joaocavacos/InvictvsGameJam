@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     public PlayerHealth healthSystem;
     public bool isDead = false;
     public Parry parry;
-
     public Animator animator;
+    public PlayerRotation playerRotation;
     private void Awake()
     {
         if (instance!=null)
@@ -62,6 +62,19 @@ public class Player : MonoBehaviour
         state = s;
         OnChangeState?.Invoke(s); 
     }
+    private void Update()
+    {
+        if (!isDead)
+        {
+            var dir = _controls.Character.Direction.ReadValue<Vector2>();
+            if (dir!=Vector2.zero)
+            {
+                float angle = Mathf.Atan2(dir.normalized.y, dir.normalized.x) * Mathf.Rad2Deg;
+                direction.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            }
+            
+        }
+    }
     public void KillPlayer()
     {
         if (!isDead)
@@ -78,6 +91,7 @@ public class Player : MonoBehaviour
             rb2D.velocity = Vector2.zero;
             //Feedback
             body.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
+            direction.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);
             GetComponent<Collider2D>().enabled = false;
             animator.SetBool("Dead", true);
         }

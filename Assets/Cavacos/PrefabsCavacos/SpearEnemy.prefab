@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3932102232944893475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4224692728344441417}
@@ -110,10 +110,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.6901961, g: 0.2604526, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 826ff0efc88b17e43bcff533e5ef4f7a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -133,15 +133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a692870334cc34596a4bda401385d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
-  speed: 3
+  damage: 0.3
+  speed: 2
   stopRange: 2
-  attackRange: 1.5
+  chargeRange: 3
   state: 0
   OnChangeState:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
+  animator: {fileID: 85877860219844956}
 --- !u!114 &4481895736240580167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +196,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 0
+  enableRotation: 1
   autoRepath:
     mode: 2
     interval: 0.5
@@ -242,8 +243,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.7}
+    oldSize: {x: 2.6666667, y: 5.633333}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -265,11 +266,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4224692728344441416}
-  attackPos: {fileID: 801668116208968394}
-  startTimeBetweenAttack: 1
+  attackCooldown: 2
+  attackRadius: 1.5
   playerMask:
     serializedVersion: 2
     m_Bits: 64
+  attackPos: {fileID: 801668116208968394}
 --- !u!95 &85877860219844956
 Animator:
   serializedVersion: 3
@@ -280,7 +282,7 @@ Animator:
   m_GameObject: {fileID: 4224692728344441415}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad45236e852d8974884c7ef37571f7f4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 68afed64492733c4499078a66fdf04d9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -301,5 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9790f8f3648307444acafb3e1b57342a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   enemy: {fileID: 4224692728344441416}
+  minimumDamage: 3

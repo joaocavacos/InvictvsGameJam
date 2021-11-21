@@ -77,7 +77,7 @@ public class WaveSystem : MonoBehaviour
     {
         if (enemiesSpawned.Count(e=> !e.isDead)<limitEnemiesAlive && enemiesSpawned.Count()< amountToSpawn)
         {
-            var enemie = Instantiate(typesOfEnemies[UnityEngine.Random.Range(0, typesOfEnemies.Count)]).GetComponent<Enemy>();
+            var enemie = Instantiate(typesOfEnemies[UnityEngine.Random.Range(0, Mathf.Min(typesOfEnemies.Count-1,(int)(currentWave/2)))]).GetComponent<Enemy>();
             enemie.transform.position = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
             enemiesSpawned.Add(enemie);            
         }

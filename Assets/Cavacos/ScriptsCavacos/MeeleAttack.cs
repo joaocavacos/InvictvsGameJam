@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Cavacos.ScriptsCavacos;
 using UnityEngine;
 
-public class MeeleAttack : MonoBehaviour
+public class MeeleAttack : EnemyAttack
 {
 
     [SerializeField] Enemy enemy;
@@ -12,6 +12,7 @@ public class MeeleAttack : MonoBehaviour
     [SerializeField] float attackCooldown;
     [SerializeField] float attackRadius;
     [SerializeField] LayerMask playerMask;
+    [SerializeField] private Transform attackPos;
 
 
     private void Update()
@@ -34,7 +35,7 @@ public class MeeleAttack : MonoBehaviour
             {
                 enemy.animator.SetTrigger("ChangeToAttack");
 
-                Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(transform.position, attackRadius, playerMask);
+                Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRadius, playerMask);
                 //Debug.Log($"{gameObject.name} can attack {playerToDamage.Length} players");
                 for (int i = 0; i < playerToDamage.Length; i++)
                 {
@@ -45,9 +46,13 @@ public class MeeleAttack : MonoBehaviour
 
                 currentCooldown = attackCooldown;
             }
+            else if(currentCooldown<0.5f)
+            {
+                enemy.animator.SetTrigger("ChangeToCharge");
+            }
             else
             {
-
+                enemy.animator.SetTrigger("ChangeToMove");
             }
 
             //Attack
@@ -57,7 +62,10 @@ public class MeeleAttack : MonoBehaviour
             currentCooldown -= Time.deltaTime;
         }
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPos.position, attackRadius);
+    }
     /*
 
     private float timeBetweenAttack;
