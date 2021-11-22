@@ -35,12 +35,6 @@ public class PlayerRotation : PlayerComponent
         }
         
     }
-    public void RotateToDir()
-    {
-        var dir = Player._controls.Character.Direction.ReadValue<Vector2>().normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Player.instance.body.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-    }
 
     public override void OnDie()
     {

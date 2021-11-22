@@ -42,7 +42,6 @@ public class Parry : PlayerComponent
             //acao de bloquear
             soundSource.PlayOneShot(blockSound);
             Player.instance.ChangeState(States.BLOCK);
-            Player.instance.playerRotation.RotateToDir();
             Player.instance.animator.SetBool("Block",true);
             blockCoroutine = StartCoroutine(Cooldown(BlockDuration));
         }

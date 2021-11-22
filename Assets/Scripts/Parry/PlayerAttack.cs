@@ -30,7 +30,6 @@ public class PlayerAttack : PlayerComponent
             Player.instance.ChangeState(States.ATK);
             Player.instance.animator.SetBool("Damage", true);
             Player.instance.animator.SetFloat("AtkPower", (int)Player.instance.parry.Meter);
-            Player.instance.playerRotation.RotateToDir();
             Atk(attackRange, Player.instance.parry.Meter);
             StartCoroutine(Cooldown(atkDuration));
         }
