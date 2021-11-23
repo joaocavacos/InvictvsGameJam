@@ -7,9 +7,11 @@ using TMPro;
 using Random = UnityEngine;
 public class WaveSystem : MonoBehaviour
 {
+    public static WaveSystem instance;
+    
     [Header("Wave")]
     public List<Transform> spawnPoints = new List<Transform>();
-    private int currentWave;
+    public int currentWave;
     [Header("Enemies")]
     public List<GameObject> typesOfEnemies = new List<GameObject>();
     public List<int> Values = new List<int>();
@@ -23,6 +25,16 @@ public class WaveSystem : MonoBehaviour
     bool waiting;
     public List<Enemy> currents = new List<Enemy>();
     private List<Enemy> dead = new List<Enemy>();
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+
+        instance = this;
+    }
 
     private void Start()
     {
