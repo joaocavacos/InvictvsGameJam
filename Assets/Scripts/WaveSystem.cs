@@ -60,8 +60,8 @@ public class WaveSystem : MonoBehaviour
     }
     private IEnumerator NextWave()
     {
-        Player.instance.healthSystem.health = Mathf.Min(1, Player.instance.healthSystem.health + ((1 - Player.instance.healthSystem.health) * 0.2f));
         waiting = true;
+        Player.instance.healthSystem.health = Mathf.Min(1, Player.instance.healthSystem.health + ((1 - Player.instance.healthSystem.health) * 0.2f));        
         currentWave += 1;
         if (currentWave % 5 == 0)
         {
@@ -104,27 +104,32 @@ public class WaveSystem : MonoBehaviour
     private IEnumerator CheckAlive()
     {
         yield return new WaitForSeconds(3f);
-        dead.AddRange(currents.Where((Enemy x) => x.isDead));
-        currents.RemoveAll((Enemy x) => x.isDead);
-
-
-        if (currents.Count == 0)
+        if (!waiting)
         {
-            StartCoroutine(NextWave());
-            if (dead.Count > bodylimit)
+            dead.AddRange(currents.Where((Enemy x) => x.isDead));
+            currents.RemoveAll((Enemy x) => x.isDead);
+
+
+            if (currents.Count == 0)
             {
-                for (int i = 0; i < dead.Count; i++)
+                StartCoroutine(NextWave());
+                if (dead.Count > bodylimit)
                 {
-                    GameObject rip = dead[0].gameObject;
-                    dead.RemoveAt(0);
-                    Destroy(rip);
-                    if (dead.Count <= bodylimit)
+                    for (int i = 0; i < dead.Count; i++)
                     {
-                        break;
+                        GameObject rip = dead[0].gameObject;
+                        dead.RemoveAt(0);
+                        Destroy(rip);
+                        if (dead.Count <= bodylimit)
+                        {
+                            break;
+                        }
                     }
                 }
             }
         }
+        
+        
         StartCoroutine(CheckAlive());
         enemiesAlive.text = currents.Count().ToString();
 
